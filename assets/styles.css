@@ -2935,23 +2935,39 @@ input[type="range"]::-moz-range-thumb {
   transform: translate(-50%, -50%) rotate(-8deg);
 }
 
+.orbit-arm {
+  position: absolute;
+  inset: 0;
+  animation: arm-spin 18s linear infinite;
+}
+
+.orbit-arm--two {
+  animation-duration: 26s;
+  animation-direction: reverse;
+  animation-delay: -7s;
+}
+
+.orbit-arm--three {
+  animation-duration: 36s;
+  animation-delay: -19s;
+}
+
 .orbit-moon {
   position: absolute;
+  top: 0;
+  left: 50%;
   width: 9px;
   height: 9px;
   border-radius: 50%;
   background: var(--cream);
+  translate: -50% -50%;
 }
 
 .orbit-moon--one {
-  top: 8%;
-  left: 48%;
   animation: moon-pulse 4s ease-in-out infinite;
 }
 
 .orbit-moon--two {
-  top: 47%;
-  right: -4px;
   width: 6px;
   height: 6px;
   background: var(--orange);
@@ -2959,12 +2975,14 @@ input[type="range"]::-moz-range-thumb {
 }
 
 .orbit-moon--three {
-  bottom: 3%;
-  left: 18%;
   width: 12px;
   height: 12px;
   background: var(--cobalt-light);
   animation: moon-pulse 6.2s -2.4s ease-in-out infinite;
+}
+
+@keyframes arm-spin {
+  to { transform: rotate(360deg); }
 }
 
 .orbit-star {
@@ -4320,6 +4338,7 @@ input[type="range"]::-moz-range-thumb {
   .portrait-orbit,
   .spark,
   .scroll-cue__icon,
+  .orbit-arm,
   .orbit-moon,
   .orbit-star {
     animation: none;

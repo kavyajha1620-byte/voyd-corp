@@ -1,0 +1,9 @@
+{
+  "name": "voyd-corp-studio",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Website for VOYD CORP, an independent two-person creative studio.",
+  "scripts": {
+    "start": "node server.js"
+  }
+}

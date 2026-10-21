@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Lumen — Considered skincare, simplified</title>
+  <meta name="description" content="Lumen is a concept skincare storefront built by VOYD CORP: clean, considered daily care with a clear product story. Independent concept project.">
+  <meta name="robots" content="noindex">
+  <meta name="theme-color" content="#f6f2ec">
+  <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/projects/lumen-skincare/lumen.css">
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+
+  <div class="demo-ribbon" role="note">
+    <span>VOYD concept project — demo storefront</span>
+    <a href="/testimonials">Back to the showcase</a>
+  </div>
+
+  <header class="site">
+    <div class="wrap nav">
+      <a class="brand" href="#top" aria-label="Lumen home">
+        <span class="brand-dot" aria-hidden="true"></span>
+        <span class="brand-name">LUMEN</span>
+      </a>
+      <nav class="links" aria-label="Primary">
+        <a href="#shop">Shop</a>
+        <a href="#ritual">Ritual</a>
+        <a href="#about">About</a>
+      </nav>
+      <button class="cart-btn" id="cart-open" type="button" aria-haspopup="dialog">
+        Cart <span class="cart-count" id="cart-count" aria-live="polite">0</span>
+      </button>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="hero" id="top">
+      <div class="wrap hero__grid">
+        <div class="hero__copy">
+          <p class="eyebrow">Daily ritual / 01</p>
+          <h1>Skin,<br><em>simplified.</em></h1>
+          <p class="lede">Three steps, thoughtfully formulated. No twelve-product routine, no laboratory jargon — just what your skin needs, in the order it needs it.</p>
+          <div class="hero__actions">
+            <a class="btn btn--ink" href="#shop">Shop the ritual<span aria-hidden="true"> →</span></a>
+            <a class="btn btn--ghost" href="#about">Our approach</a>
+          </div>
+          <dl class="hero__facts">
+            <div><dt>Formulas</dt><dd>Fragrance-free</dd></div>
+            <div><dt>Testing</dt><dd>Dermatologist-reviewed</dd></div>
+            <div><dt>Packaging</dt><dd>Refillable</dd></div>
+          </dl>
+        </div>
+        <div class="hero__art" aria-hidden="true">
+          <div class="blob"></div>
+          <div class="bottle">
+            <span class="bottle__cap"></span>
+            <span class="bottle__label">LUMEN<br><small>03</small></span>
+          </div>
+          <span class="leaf leaf--a"></span>
+          <span class="leaf leaf--b"></span>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="shop" aria-labelledby="shop-title">
+      <div class="wrap">
+        <div class="section-head">
+          <p class="eyebrow">The collection</p>
+          <h2 id="shop-title">Four essentials, <em>no filler.</em></h2>
+        </div>
+
+        <div class="filters" role="tablist" aria-label="Filter products">
+          <button class="chip is-active" role="tab" aria-selected="true" data-filter="all">All</button>
+          <button class="chip" role="tab" aria-selected="false" data-filter="cleanse">Cleanse</button>
+          <button class="chip" role="tab" aria-selected="false" data-filter="treat">Treat</button>
+          <button class="chip" role="tab" aria-selected="false" data-filter="hydrate">Hydrate</button>
+        </div>
+
+        <div class="grid" id="product-grid"></div>
+      </div>
+    </section>
+
+    <section class="section section--ink" id="ritual" aria-labelledby="ritual-title">
+      <div class="wrap ritual">
+        <div class="ritual__head">
+          <p class="eyebrow">The ritual</p>
+          <h2 id="ritual-title">Three minutes, <em>morning and night.</em></h2>
+        </div>
+        <ol class="steps">
+          <li><span>01</span><div><h3>Cleanse</h3><p>A gentle gel that lifts the day without stripping the barrier.</p></div></li>
+          <li><span>02</span><div><h3>Treat</h3><p>A weightless serum with niacinamide and hyaluronic acid.</p></div></li>
+          <li><span>03</span><div><h3>Hydrate</h3><p>A ceramide cream that seals everything in. Non-greasy.</p></div></li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="section" id="about" aria-labelledby="about-title">
+      <div class="wrap about">
+        <div>
+          <p class="eyebrow">About Lumen</p>
+          <h2 id="about-title">Fewer bottles, <em>better decisions.</em></h2>
+          <p>The skincare aisle rewards confusion. Lumen was designed around the opposite idea: a short, honest line where every product has one job and does it. Ingredients are listed in plain language, and the story leads with a single benefit before the detail.</p>
+          <p class="muted">This is a self-initiated concept project by VOYD CORP. No products ship, no orders are taken, and nothing here is real client work.</p>
+        </div>
+        <div class="about__panel">
+          <h3>Free of</h3>
+          <ul><li>Synthetic fragrance</li><li>Drying alcohols</li><li>Filler claims</li><li>Multi-step guilt</li></ul>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="foot">
+    <div class="wrap foot__inner">
+      <span>LUMEN — a VOYD CORP concept project</span>
+      <a href="/testimonials">See more concept work ↗</a>
+    </div>
+  </footer>
+
+  <!-- Product detail dialog -->
+  <dialog class="dialog" id="product-dialog" aria-labelledby="pd-title">
+    <div class="dialog__inner">
+      <button class="dialog__close" id="pd-close" type="button" aria-label="Close product">Close ×</button>
+      <div class="dialog__art" id="pd-art" aria-hidden="true"></div>
+      <div class="dialog__body">
+        <p class="eyebrow" id="pd-category">—</p>
+        <h2 id="pd-title">—</h2>
+        <p class="dialog__price" id="pd-price">—</p>
+        <p id="pd-desc"></p>
+        <h3 class="dialog__sub">Key ingredients</h3>
+        <ul id="pd-ingredients" class="ing"></ul>
+        <div class="dialog__row">
+          <label class="qty">Qty
+            <input id="pd-qty" type="number" min="1" max="9" value="1" inputmode="numeric">
+          </label>
+          <button class="btn btn--ink" id="pd-add" type="button">Add to cart</button>
+        </div>
+      </div>
+    </div>
+  </dialog>
+
+  <!-- Cart drawer -->
+  <div class="drawer" id="cart-drawer" role="dialog" aria-modal="true" aria-labelledby="cart-title" hidden>
+    <div class="drawer__scrim" data-cart-close></div>
+    <div class="drawer__panel">
+      <div class="drawer__top">
+        <h2 id="cart-title">Your cart</h2>
+        <button class="dialog__close" type="button" data-cart-close aria-label="Close cart">Close ×</button>
+      </div>
+      <div class="drawer__body" id="cart-items"></div>
+      <div class="drawer__foot">
+        <p class="cart-total">Subtotal <strong id="cart-total">$0.00</strong></p>
+        <button class="btn btn--ink btn--block" id="checkout-open" type="button">Checkout (demo)</button>
+        <p class="tiny">Demo checkout — no payment details are collected and no real order is created.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Demo checkout -->
+  <dialog class="dialog dialog--checkout" id="checkout-dialog" aria-labelledby="co-title">
+    <form class="checkout" id="checkout-form" novalidate>
+      <button class="dialog__close" type="button" id="co-close" aria-label="Close checkout">Close ×</button>
+      <h2 id="co-title">Demo checkout</h2>
+      <p class="tiny">This is a concept storefront. Fields are validated but nothing is charged or sent anywhere.</p>
+      <label class="field">Full name<input name="name" type="text" required autocomplete="name"></label>
+      <label class="field">Email<input name="email" type="email" required autocomplete="email"></label>
+      <label class="field">Address<input name="address" type="text" required autocomplete="street-address"></label>
+      <div class="row2">
+        <label class="field">City<input name="city" type="text" required autocomplete="address-level2"></label>
+        <label class="field">Postcode<input name="postcode" type="text" required autocomplete="postal-code"></label>
+      </div>
+      <p class="form-status" data-checkout-message hidden></p>
+      <div class="order-summary" data-order-summary hidden></div>
+      <button class="btn btn--ink btn--block" type="submit">Place demo order</button>
+    </form>
+  </dialog>
+
+  <script src="/projects/js/store.js"></script>
+  <script src="/projects/lumen-skincare/lumen.js"></script>
+</body>
+</html>

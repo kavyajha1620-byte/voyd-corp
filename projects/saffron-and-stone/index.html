@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Saffron &amp; Stone — Fire-cooked dining</title>
+  <meta name="description" content="Saffron &amp; Stone is a concept restaurant site built by VOYD CORP: a readable menu, an honest story, and a working demo reservation flow. Independent concept project.">
+  <meta name="robots" content="noindex">
+  <meta name="theme-color" content="#1c1410">
+  <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/projects/saffron-and-stone/saffron.css">
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+
+  <div class="demo-ribbon" role="note">
+    <span>VOYD concept project — demo restaurant</span>
+    <a href="/testimonials">Back to the showcase</a>
+  </div>
+
+  <header class="site">
+    <div class="wrap nav">
+      <a class="brand" href="#top">SAFFRON <span>&amp;</span> STONE</a>
+      <nav class="links" aria-label="Primary">
+        <a href="#menu">Menu</a>
+        <a href="#story">Story</a>
+        <a href="#visit">Visit</a>
+      </nav>
+      <button class="btn btn--sm" id="book-open" type="button">Book a table</button>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="hero" id="top">
+      <div class="hero__scrim"></div>
+      <div class="wrap hero__inner">
+        <p class="eyebrow">Ember-fired kitchen</p>
+        <h1>Dinner cooked<br>over <em>live fire.</em></h1>
+        <p class="lede">A small menu that changes with the market and the coals. Everything below is described the way it's actually cooked — no poetry, just dinner.</p>
+        <div class="hero__cta">
+          <button class="btn" id="book-open-2" type="button">Book a table</button>
+          <a class="btn btn--ghost" href="#menu">See the menu</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="facts">
+      <div class="wrap facts__grid">
+        <div><span class="facts__k">Hours</span><span class="facts__v">Wed–Sun, 17:30–late</span></div>
+        <div><span class="facts__k">Seats</span><span class="facts__v">32 inside, 10 at the fire</span></div>
+        <div><span class="facts__k">Style</span><span class="facts__v">Shared plates, wood-fired</span></div>
+      </div>
+    </section>
+
+    <section class="section" id="menu" aria-labelledby="menu-title">
+      <div class="wrap">
+        <div class="section-head">
+          <p class="eyebrow">The menu</p>
+          <h2 id="menu-title">What's <em>cooking</em></h2>
+          <p class="muted">Filter by course. Prices are illustrative for this concept.</p>
+        </div>
+
+        <div class="toolbar">
+          <div class="filters" aria-label="Filter by course">
+            <button class="chip is-active" data-filter="all">All</button>
+            <button class="chip" data-filter="small">Small</button>
+            <button class="chip" data-filter="fire">From the fire</button>
+            <button class="chip" data-filter="veg">Vegetable</button>
+            <button class="chip" data-filter="sweet">Sweet</button>
+          </div>
+        </div>
+
+        <ul class="menu-list" id="menu-list"></ul>
+        <p class="empty" id="empty" hidden>No dishes in that course right now.</p>
+      </div>
+    </section>
+
+    <section class="section section--dark" id="story" aria-labelledby="story-title">
+      <div class="wrap story">
+        <div><p class="eyebrow">Our story</p><h2 id="story-title">A kitchen built<br><em>around one fire.</em></h2></div>
+        <div class="story__body">
+          <p>Saffron &amp; Stone runs on a single wood-fired hearth. That constraint shapes everything: the menu is short, the timing is honest, and a handful of dishes run out each night because the coals decide, not a spreadsheet.</p>
+          <p class="muted">Self-initiated concept project by VOYD CORP. This restaurant is fictional and no tables can really be booked.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="visit" aria-labelledby="visit-title">
+      <div class="wrap visit">
+        <div class="visit__card">
+          <h2 id="visit-title">Find us</h2>
+          <p class="muted">Example location for a concept build — 14 Kiln Lane, Old Quarter.</p>
+          <dl class="visit__dl">
+            <div><dt>Wednesday–Sunday</dt><dd>17:30 – 23:00</dd></div>
+            <div><dt>Monday–Tuesday</dt><dd>Closed to the public</dd></div>
+            <div><dt>Reservations</dt><dd>Demo form only</dd></div>
+          </dl>
+        </div>
+        <div class="visit__map" aria-hidden="true">
+          <div class="map"></div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="foot">
+    <div class="wrap foot__inner">
+      <span>SAFFRON &amp; STONE — a VOYD CORP concept project</span>
+      <a href="/testimonials">See more concept work ↗</a>
+    </div>
+  </footer>
+
+  <dialog class="dialog" id="booking" aria-labelledby="bk-title">
+    <div class="bk">
+      <button class="dialog__close" id="bk-close" type="button" aria-label="Close">Close ×</button>
+      <h2 id="bk-title">Reserve a table</h2>
+      <p class="muted">This books nothing real. It demonstrates a complete reservation flow with honest confirmation.</p>
+      <form id="bk-form" novalidate>
+        <label>Name<input name="name" required autocomplete="name"></label>
+        <label>Email<input type="email" name="email" required autocomplete="email"></label>
+        <div class="co-grid">
+          <label>Date<input type="date" name="date" required></label>
+          <label>Time
+            <select name="time" required>
+              <option value="">Choose…</option>
+              <option>17:30</option><option>18:00</option><option>18:30</option>
+              <option>19:00</option><option>19:30</option><option>20:00</option>
+              <option>20:30</option><option>21:00</option>
+            </select>
+          </label>
+        </div>
+        <label>Party size
+          <select name="party" required>
+            <option value="">Choose…</option>
+            <option>1</option><option>2</option><option>3</option><option>4</option>
+            <option>5</option><option>6</option><option>7</option><option>8+</option>
+          </select>
+        </label>
+        <label>Notes (optional)<textarea name="notes" rows="2" placeholder="Allergies, occasion, seating preference"></textarea></label>
+        <p class="co-msg" data-form-status hidden></p>
+        <button class="btn btn--full" type="submit">Request table</button>
+      </form>
+      <p class="tiny">Demo only — no reservation is stored or sent.</p>
+    </div>
+  </dialog>
+
+  <script src="/projects/js/store.js"></script>
+  <script src="/projects/saffron-and-stone/saffron.js"></script>
+</body>
+</html>

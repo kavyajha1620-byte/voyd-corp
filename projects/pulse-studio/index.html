@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>PULSE Studio — Strength &amp; conditioning</title>
+  <meta name="description" content="PULSE is a concept fitness-studio site built by VOYD CORP: a class timetable you can filter and a working demo class-booking flow. Independent concept project.">
+  <meta name="robots" content="noindex">
+  <meta name="theme-color" content="#f5f2ee">
+  <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/projects/pulse-studio/pulse.css">
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+
+  <div class="demo-ribbon" role="note">
+    <span>VOYD concept project — demo fitness studio</span>
+    <a href="/testimonials">Back to the showcase</a>
+  </div>
+
+  <header class="site">
+    <div class="wrap nav">
+      <a class="brand" href="#top">PULSE<span>⚡</span></a>
+      <nav class="links" aria-label="Primary">
+        <a href="#timetable">Timetable</a>
+        <a href="#coaches">Coaches</a>
+        <a href="#pricing">Pricing</a>
+      </nav>
+      <button class="btn" id="join-open" type="button">Book a class</button>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="hero" id="top">
+      <div class="wrap hero__grid">
+        <div class="hero__copy">
+          <p class="eyebrow">Strength · Conditioning · Mobility</p>
+          <h1>Train with<br><em>intent.</em></h1>
+          <p class="lede">Small classes, real coaching, no mirrors-and-noise. Pick a class from the timetable and reserve a demo spot.</p>
+          <div class="hero__cta">
+            <a class="btn" href="#timetable">See the timetable</a>
+            <a class="btn btn--ghost" href="#pricing">View pricing</a>
+          </div>
+        </div>
+        <div class="hero__art" aria-hidden="true">
+          <div class="bar bar--1"></div>
+          <div class="bar bar--2"></div>
+          <div class="bar bar--3"></div>
+          <div class="bar bar--4"></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="stats">
+      <div class="wrap stats__grid">
+        <div><strong>14</strong><span>classes a day</span></div>
+        <div><strong>12</strong><span>max per class</span></div>
+        <div><strong>45</strong><span>minute sessions</span></div>
+        <div><strong>6</strong><span>coaches</span></div>
+      </div>
+    </section>
+
+    <section class="section" id="timetable" aria-labelledby="tt-title">
+      <div class="wrap">
+        <div class="section-head">
+          <p class="eyebrow">Timetable</p>
+          <h2 id="tt-title">This <em>week</em></h2>
+          <p class="muted">Pick a day and a class type. Spots shown are illustrative for this demo.</p>
+        </div>
+
+        <div class="daybar" id="daybar" role="tablist" aria-label="Day of week"></div>
+
+        <div class="tt-toolbar">
+          <div class="filters" aria-label="Filter by class type">
+            <button class="chip is-active" data-filter="all">All</button>
+            <button class="chip" data-filter="strength">Strength</button>
+            <button class="chip" data-filter="conditioning">Conditioning</button>
+            <button class="chip" data-filter="mobility">Mobility</button>
+          </div>
+        </div>
+
+        <ul class="tt" id="tt"></ul>
+        <p class="empty" id="empty" hidden>No classes match that filter on this day.</p>
+      </div>
+    </section>
+
+    <section class="section section--dark" id="coaches" aria-labelledby="co-title">
+      <div class="wrap">
+        <div class="section-head"><p class="eyebrow">The floor</p><h2 id="co-title">Coaches on <em>the floor</em></h2></div>
+        <div class="coaches">
+          <article><div class="coach__av" data-tone="a"></div><h3>Lead Coach — Strength</h3><p>Powerlifting background, ten years coaching. Cares about positions before load.</p></article>
+          <article><div class="coach__av" data-tone="b"></div><h3>Conditioning Coach</h3><p>Endurance and engine work. Built for people who want to move for longer.</p></article>
+          <article><div class="coach__av" data-tone="c"></div><h3>Mobility Coach</h3><p>Range, control, and injury-proofing. The class everyone should do more of.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="pricing" aria-labelledby="pr-title">
+      <div class="wrap">
+        <div class="section-head"><p class="eyebrow">Membership</p><h2 id="pr-title">Simple <em>pricing</em></h2></div>
+        <div class="plans">
+          <article class="plan"><h3>Drop-in</h3><div class="plan__price">$22<span>/class</span></div><ul><li>Any single class</li><li>No commitment</li><li>Book up to 24h ahead</li></ul><button class="btn" type="button" data-plan="Drop-in">Choose drop-in</button></article>
+          <article class="plan plan--feature"><span class="plan__badge">Best value</span><h3>Unlimited</h3><div class="plan__price">$139<span>/month</span></div><ul><li>All classes</li><li>Priority booking</li><li>Free mobility session monthly</li><li>Cancel anytime</li></ul><button class="btn" type="button" data-plan="Unlimited">Go unlimited</button></article>
+          <article class="plan"><h3>5-class pack</h3><div class="plan__price">$99<span>/pack</span></div><ul><li>Five classes</li><li>Valid 3 months</li><li>Shareable within a household</li></ul><button class="btn" type="button" data-plan="5-class pack">Buy a pack</button></article>
+        </div>
+        <p class="muted tiny">Concept pricing shown for demonstration. No memberships are sold.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="foot">
+    <div class="wrap foot__inner">
+      <span>PULSE — a VOYD CORP concept project</span>
+      <a href="/testimonials">See more concept work ↗</a>
+    </div>
+  </footer>
+
+  <dialog class="dialog" id="booking" aria-labelledby="bk-title">
+    <div class="bk">
+      <button class="dialog__close" id="bk-close" type="button" aria-label="Close">Close ×</button>
+      <h2 id="bk-title">Reserve your spot</h2>
+      <div class="bk__slot" id="bk-slot"></div>
+      <form id="bk-form" novalidate>
+        <label>Name<input name="name" required autocomplete="name"></label>
+        <label>Email<input type="email" name="email" required autocomplete="email"></label>
+        <label class="check-inline"><input type="checkbox" name="consent"><span>I understand this is a demo booking and no spot is really held.</span></label>
+        <p class="co-msg" data-form-status hidden></p>
+        <button class="btn btn--full" type="submit">Reserve (demo)</button>
+      </form>
+    </div>
+  </dialog>
+
+  <script src="/projects/js/store.js"></script>
+  <script src="/projects/pulse-studio/pulse.js"></script>
+</body>
+</html>

@@ -3,7 +3,11 @@ node_modules/
 .DS_Store
 Thumbs.db
 *.log
+
+# Secrets — never commit
 .env
 .env.local
+.env.*.local
 
-.vercel
+# Local filesystem driver data (submissions + uploads)
+.voyd-data/

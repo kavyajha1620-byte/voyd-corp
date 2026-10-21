@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Atelier Éclat — Fine jewellery</title>
+  <meta name="description" content="Atelier Éclat is a concept fine-jewellery boutique built by VOYD CORP: a curated catalogue, collections, and considered product detail. Independent concept project.">
+  <meta name="robots" content="noindex">
+  <meta name="theme-color" content="#12100e">
+  <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/projects/atelier-jewels/atelier.css">
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+
+  <div class="demo-ribbon" role="note">
+    <span>VOYD concept project — demo boutique</span>
+    <a href="/testimonials">Back to the showcase</a>
+  </div>
+
+  <header class="site">
+    <div class="wrap nav">
+      <a class="brand" href="#top">ATELIER <span>ÉCLAT</span></a>
+      <nav class="links" aria-label="Primary">
+        <a href="#collection">Collection</a>
+        <a href="#story">Atelier</a>
+        <a href="#service">Service</a>
+      </nav>
+      <button class="cart-btn" id="cart-open" type="button">Showcase <span id="cart-count">0</span></button>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="hero" id="top">
+      <div class="wrap hero__inner">
+        <p class="eyebrow">Fine jewellery / Est. in concept</p>
+        <h1>Pieces for<br><em>kept moments.</em></h1>
+        <p class="lede">A small, deliberate collection. Every piece is described down to the cut, the metal, and the reason it exists — no manufactured scarcity, no invented legends.</p>
+        <a class="btn" href="#collection">View the collection<span aria-hidden="true"> →</span></a>
+      </div>
+      <div class="hero__shine" aria-hidden="true"></div>
+    </section>
+
+    <section class="section" id="collection" aria-labelledby="col-title">
+      <div class="wrap">
+        <div class="section-head">
+          <h2 id="col-title">The <em>collection</em></h2>
+          <p class="muted">Filter by material or sort by price. Every piece opens to a full detail view.</p>
+        </div>
+
+        <div class="toolbar">
+          <div class="filters" aria-label="Filter by material">
+            <button class="chip is-active" data-filter="all">All</button>
+            <button class="chip" data-filter="gold">Gold</button>
+            <button class="chip" data-filter="silver">Silver</button>
+            <button class="chip" data-filter="stone">Stone-set</button>
+          </div>
+          <label class="sort">Sort
+            <select id="sort" aria-label="Sort pieces">
+              <option value="featured">Featured</option>
+              <option value="low">Price: low to high</option>
+              <option value="high">Price: high to low</option>
+            </select>
+          </label>
+        </div>
+
+        <div class="grid" id="grid"></div>
+        <p class="empty" id="empty" hidden>No pieces match that filter.</p>
+      </div>
+    </section>
+
+    <section class="section section--dark" id="story" aria-labelledby="story-title">
+      <div class="wrap story">
+        <div>
+          <p class="eyebrow">The atelier</p>
+          <h2 id="story-title">Fewer pieces, <em>made to keep.</em></h2>
+        </div>
+        <div class="story__body">
+          <p>Atelier Éclat is arranged around restraint. Instead of a thousand SKUs, a handful of silhouettes that can be worn every day and still feel considered at an event. The site treats product photography and specification with the same seriousness as the brand.</p>
+          <p class="muted">Self-initiated concept project by VOYD CORP. No pieces are for sale and no orders or payments are processed.</p>
+          <dl class="stat-row">
+            <div><dt>Pieces</dt><dd>Eight</dd></div>
+            <div><dt>Metals</dt><dd>18k · Sterling</dd></div>
+            <div><dt>Finish</dt><dd>Hand-polished</dd></div>
+          </dl>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="service" aria-labelledby="svc-title">
+      <div class="wrap">
+        <div class="section-head"><h2 id="svc-title">Service, <em>explained.</em></h2></div>
+        <div class="services">
+          <article><h3>Complimentary sizing</h3><p>Rings are described with a printable sizer and a conversion table. Free resizing is stated plainly.</p></article>
+          <article><h3>Lifetime care</h3><p>Cleaning, re-polishing, and stone-tightening described with honest turnaround windows.</p></article>
+          <article><h3>Considered packaging</h3><p>Recycled boxes and refillable travel pouches. No plastic filler.</p></article>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="foot">
+    <div class="wrap foot__inner">
+      <span>ATELIER ÉCLAT — a VOYD CORP concept project</span>
+      <a href="/testimonials">See more concept work ↗</a>
+    </div>
+  </footer>
+
+  <dialog class="dialog" id="detail" aria-labelledby="d-title">
+    <div class="dialog__inner">
+      <button class="dialog__close" id="d-close" type="button" aria-label="Close">Close ×</button>
+      <div class="dialog__art" id="d-art" aria-hidden="true"></div>
+      <div class="dialog__body">
+        <p class="eyebrow" id="d-material">—</p>
+        <h2 id="d-title">—</h2>
+        <p class="dialog__price" id="d-price">—</p>
+        <p id="d-desc"></p>
+        <dl class="spec" id="d-spec"></dl>
+        <div class="dialog__row">
+          <button class="btn" id="d-save" type="button">Save to showcase</button>
+          <button class="btn btn--ghost" id="d-remove" type="button" hidden>Remove</button>
+        </div>
+      </div>
+    </div>
+  </dialog>
+
+  <div class="drawer" id="drawer" role="dialog" aria-modal="true" aria-labelledby="show-title" hidden>
+    <div class="drawer__scrim" data-close></div>
+    <div class="drawer__panel">
+      <div class="drawer__top">
+        <h2 id="show-title">Saved pieces</h2>
+        <button class="dialog__close" type="button" data-close aria-label="Close">Close ×</button>
+      </div>
+      <div class="drawer__body" id="drawer-items"></div>
+      <div class="drawer__foot">
+        <p class="tiny">This is a browse-and-save demo. Nothing is purchased and no enquiry is sent.</p>
+      </div>
+    </div>
+  </div>
+
+  <script src="/projects/js/store.js"></script>
+  <script src="/projects/atelier-jewels/atelier.js"></script>
+</body>
+</html>

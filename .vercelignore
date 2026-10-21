@@ -1,0 +1,23 @@
+# Files that must never reach the Vercel deployment.
+# Vercel already excludes things outside the project root, but this is defence in depth
+# so local data, secrets, and database scripts cannot leak if the layout changes.
+
+# Local filesystem storage driver data (submissions, uploads)
+.voyd-data/
+data/
+
+# Secrets
+.env
+.env.*
+*.local
+!.env.example
+
+# Local tooling / logs
+*.log
+node_modules/
+
+# The local preview server is not part of the deployed site
+server.js
+
+# Database scripts are setup references, not part of the served site
+*.sql

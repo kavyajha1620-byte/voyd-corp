@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Halcyon House — Coastal retreat</title>
+  <meta name="description" content="Halcyon House is a concept boutique-hotel site built by VOYD CORP: rooms, rates, and a working demo booking flow. Independent concept project.">
+  <meta name="robots" content="noindex">
+  <meta name="theme-color" content="#eef3f2">
+  <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/projects/halcyon-house/halcyon.css">
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+
+  <div class="demo-ribbon" role="note">
+    <span>VOYD concept project — demo hotel</span>
+    <a href="/testimonials">Back to the showcase</a>
+  </div>
+
+  <header class="site">
+    <div class="wrap nav">
+      <a class="brand" href="#top">HALCYON <span>HOUSE</span></a>
+      <nav class="links" aria-label="Primary">
+        <a href="#rooms">Rooms</a>
+        <a href="#place">The place</a>
+        <a href="#stay">Stay</a>
+      </nav>
+      <button class="btn" id="book-open" type="button">Check dates</button>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="hero" id="top">
+      <div class="wrap hero__inner">
+        <p class="eyebrow">Sea-facing, twelve rooms</p>
+        <h1>A quiet house<br>by the water.</h1>
+        <p class="lede">Twelve rooms, one long horizon. Pick your dates below and the concept site will show what's available and what it costs — clearly labelled as a demo.</p>
+        <form class="search" id="search" novalidate>
+          <label>Arrive<input type="date" name="from" required></label>
+          <label>Depart<input type="date" name="to" required></label>
+          <label>Guests
+            <select name="guests" required>
+              <option value="1">1</option><option value="2" selected>2</option>
+              <option value="3">3</option><option value="4">4</option>
+            </select>
+          </label>
+          <button class="btn" type="submit">Check availability</button>
+        </form>
+        <p class="search__msg" data-form-status hidden></p>
+      </div>
+      <div class="hero__wave" aria-hidden="true"></div>
+    </section>
+
+    <section class="section" id="rooms" aria-labelledby="rooms-title">
+      <div class="wrap">
+        <div class="section-head">
+          <p class="eyebrow">The rooms</p>
+          <h2 id="rooms-title">Choose <em>your view</em></h2>
+          <p class="muted" id="avail-note">Showing the full house.</p>
+        </div>
+        <div class="grid" id="grid"></div>
+      </div>
+    </section>
+
+    <section class="section section--tint" id="place" aria-labelledby="place-title">
+      <div class="wrap place">
+        <div>
+          <p class="eyebrow">The place</p>
+          <h2 id="place-title">Slow by<br><em>design.</em></h2>
+          <p class="muted">A house on a quiet stretch of coast, built for people who want the sea and nothing staged around it. Breakfast is long, the bar is small, and the beach is fifty steps from the gate.</p>
+          <ul class="amen">
+            <li>Breakfast included</li>
+            <li>Sea-facing terrace</li>
+            <li>Honesty bar</li>
+            <li>House bicycles</li>
+            <li>Reading room</li>
+            <li>No televisions</li>
+          </ul>
+        </div>
+        <div class="place__art" aria-hidden="true"></div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="foot" id="stay">
+    <div class="wrap foot__inner">
+      <span>HALCYON HOUSE — a VOYD CORP concept project</span>
+      <a href="/testimonials">See more concept work ↗</a>
+    </div>
+  </footer>
+
+  <dialog class="dialog" id="room" aria-labelledby="r-title">
+    <div class="dialog__inner">
+      <button class="dialog__close" id="r-close" type="button" aria-label="Close">Close ×</button>
+      <div class="dialog__art" id="r-art" aria-hidden="true"></div>
+      <div class="dialog__body">
+        <p class="eyebrow" id="r-view">—</p>
+        <h2 id="r-title">—</h2>
+        <p class="dialog__price" id="r-price">—</p>
+        <p id="r-desc"></p>
+        <ul class="r-feats" id="r-feats"></ul>
+        <div class="dialog__row">
+          <button class="btn" id="r-book" type="button">Reserve (demo)</button>
+        </div>
+      </div>
+    </div>
+  </dialog>
+
+  <dialog class="dialog dialog--sm" id="checkout" aria-labelledby="co-title">
+    <div class="co">
+      <button class="dialog__close" id="co-close" type="button" aria-label="Close">Close ×</button>
+      <h2 id="co-title">Confirm your stay</h2>
+      <p class="muted">Demo booking. No card details are collected and no reservation exists.</p>
+      <form id="co-form" novalidate>
+        <div class="co-summary" data-order-summary></div>
+        <label>Full name<input name="name" required autocomplete="name"></label>
+        <label>Email<input type="email" name="email" required autocomplete="email"></label>
+        <p class="co-msg" data-checkout-message hidden></p>
+        <button class="btn btn--full" type="submit">Confirm demo booking</button>
+      </form>
+    </div>
+  </dialog>
+
+  <script src="/projects/js/store.js"></script>
+  <script src="/projects/halcyon-house/halcyon.js"></script>
+</body>
+</html>

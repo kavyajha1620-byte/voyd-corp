@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Woodwright &amp; Loom — Made-to-last furniture</title>
+  <meta name="description" content="Woodwright &amp; Loom is a concept furniture-maker site built by VOYD CORP: a material-filtered catalogue, product detail, and a working demo enquiry. Independent concept project.">
+  <meta name="robots" content="noindex">
+  <meta name="theme-color" content="#efe7db">
+  <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/projects/woodwright-loom/woodwright.css">
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+
+  <div class="demo-ribbon" role="note">
+    <span>VOYD concept project — demo furniture maker</span>
+    <a href="/testimonials">Back to the showcase</a>
+  </div>
+
+  <header class="site">
+    <div class="wrap nav">
+      <a class="brand" href="#top"><span class="brand__w">W</span><span class="brand__l">L</span> WOODWRIGHT &amp; LOOM</a>
+      <nav class="links" aria-label="Primary">
+        <a href="#catalogue">Furniture</a>
+        <a href="#made">How it's made</a>
+        <a href="#materials">Materials</a>
+      </nav>
+      <button class="btn" id="enq-open" type="button">Request a quote</button>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="hero" id="top">
+      <div class="wrap hero__grid">
+        <div class="hero__copy">
+          <p class="eyebrow">Solid wood · Hand-finished</p>
+          <h1>Furniture that<br><em>outlives the trend.</em></h1>
+          <p class="lede">Made to order from solid timber and natural fibres. Browse the catalogue by material, then send a brief for a piece built to your space.</p>
+        </div>
+        <div class="hero__art" aria-hidden="true">
+          <div class="plank plank--1"></div>
+          <div class="plank plank--2"></div>
+          <div class="plank plank--3"></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="catalogue" aria-labelledby="cat-title">
+      <div class="wrap">
+        <div class="section-head">
+          <p class="eyebrow">The catalogue</p>
+          <h2 id="cat-title">Pieces, by <em>material</em></h2>
+          <p class="muted">Each piece lists its timber, finish, and lead time honestly.</p>
+        </div>
+        <div class="toolbar">
+          <div class="filters" aria-label="Filter by material">
+            <button class="chip is-active" data-filter="all">All</button>
+            <button class="chip" data-filter="oak">Oak</button>
+            <button class="chip" data-filter="walnut">Walnut</button>
+            <button class="chip" data-filter="ash">Ash</button>
+            <button class="chip" data-filter="linen">Linen &amp; fibre</button>
+          </div>
+          <label class="sort">Sort
+            <select id="sort" aria-label="Sort furniture">
+              <option value="featured">Featured</option>
+              <option value="low">Price: low to high</option>
+              <option value="high">Price: high to low</option>
+            </select>
+          </label>
+        </div>
+        <div class="grid" id="grid"></div>
+        <p class="empty" id="empty" hidden>No pieces in that material yet.</p>
+      </div>
+    </section>
+
+    <section class="section section--tint" id="made" aria-labelledby="made-title">
+      <div class="wrap made">
+        <div>
+          <p class="eyebrow">How it's made</p>
+          <h2 id="made-title">Slow on purpose,<br><em>built to be repaired.</em></h2>
+          <p class="muted">Every piece is made to order in a single workshop. Joints are cut to be taken apart and re-glued, so a table can be re-finished rather than replaced. Lead times are stated as they really are — nothing is "in stock" that isn't.</p>
+          <p class="muted">Self-initiated concept project by VOYD CORP. This maker is fictional and no orders are taken.</p>
+        </div>
+        <ol class="made__steps">
+          <li><span>01</span><strong>Timber selected</strong> Kiln-dried and checked for movement before cutting.</li>
+          <li><span>02</span><strong>Joints cut</strong> Mortise-and-tenon and dovetails, cut by hand and machine.</li>
+          <li><span>03</span><strong>Finished</strong> Hard-wax oil or soap, applied in coats and cured.</li>
+          <li><span>04</span><strong>Delivered</strong> Blanket-wrapped and assembled in your room.</li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="section" id="materials" aria-labelledby="mat-title">
+      <div class="wrap">
+        <div class="section-head"><p class="eyebrow">Materials</p><h2 id="mat-title">Honest <em>materials</em></h2></div>
+        <div class="mats">
+          <article><div class="mat__swatch" data-m="oak"></div><h3>European Oak</h3><p>Hard, pale, and takes oil well. Our default for tables and shelving.</p></article>
+          <article><div class="mat__swatch" data-m="walnut"></div><h3>American Walnut</h3><p>Darker and warmer, with a figure that moves. Used where colour matters.</p></article>
+          <article><div class="mat__swatch" data-m="ash"></div><h3>Ash</h3><p>Pale and springy, good for chairs where a little give helps.</p></article>
+          <article><div class="mat__swatch" data-m="linen"></div><h3>Linen &amp; wool</h3><p>Natural upholstery, sourced for wear and how it ages, not just colour.</p></article>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="foot">
+    <div class="wrap foot__inner">
+      <span>WOODWRIGHT &amp; LOOM — a VOYD CORP concept project</span>
+      <a href="/testimonials">See more concept work ↗</a>
+    </div>
+  </footer>
+
+  <dialog class="dialog" id="product" aria-labelledby="p-title">
+    <div class="dialog__inner">
+      <button class="dialog__close" id="p-close" type="button" aria-label="Close">Close ×</button>
+      <div class="dialog__art" id="p-art" aria-hidden="true"></div>
+      <div class="dialog__body">
+        <p class="eyebrow" id="p-material">—</p>
+        <h2 id="p-title">—</h2>
+        <p class="dialog__price" id="p-price">—</p>
+        <p id="p-desc"></p>
+        <dl class="spec" id="p-spec"></dl>
+        <div class="dialog__row">
+          <button class="btn" id="p-enquire" type="button">Enquire about this piece</button>
+        </div>
+      </div>
+    </div>
+  </dialog>
+
+  <dialog class="dialog dialog--sm" id="enquiry" aria-labelledby="enq-title">
+    <div class="enq">
+      <button class="dialog__close" id="enq-close" type="button" aria-label="Close">Close ×</button>
+      <h2 id="enq-title">Request a quote</h2>
+      <p class="muted" id="enq-context">Tell us what you're after. This is a demo — nothing is sent to a workshop.</p>
+      <form id="enq-form" novalidate>
+        <label>Name<input name="name" required autocomplete="name"></label>
+        <label>Email<input type="email" name="email" required autocomplete="email"></label>
+        <div class="co-grid">
+          <label>Timber
+            <select name="timber" required>
+              <option value="">Choose…</option>
+              <option>Oak</option><option>Walnut</option><option>Ash</option><option>Not sure yet</option>
+            </select>
+          </label>
+          <label>Budget
+            <select name="budget" required>
+              <option value="">Choose…</option>
+              <option>Under $1,000</option><option>$1,000–$3,000</option>
+              <option>$3,000–$8,000</option><option>$8,000+</option>
+            </select>
+          </label>
+        </div>
+        <label>What do you need made?<textarea name="brief" rows="3" required placeholder="Piece, size, room, deadline"></textarea></label>
+        <p class="co-msg" data-form-status hidden></p>
+        <button class="btn btn--full" type="submit">Send enquiry (demo)</button>
+      </form>
+    </div>
+  </dialog>
+
+  <script src="/projects/js/store.js"></script>
+  <script src="/projects/woodwright-loom/woodwright.js"></script>
+</body>
+</html>

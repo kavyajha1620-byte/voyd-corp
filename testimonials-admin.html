@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Review — You Said It, Not Us. — VOYD CORP</title>
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="theme-color" content="#171711">
+  <meta name="color-scheme" content="light">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="preload" href="assets/fonts/bricolage-grotesque-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/fonts/instrument-serif-italic-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/fonts/manrope-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <script>document.documentElement.classList.add("js");</script>
+  <link rel="stylesheet" href="assets/testimonials-admin.css">
+  <script defer src="assets/testimonials-admin.js"></script>
+</head>
+<body class="adm-page">
+
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="adm-header">
+    <div class="adm-header__inner">
+      <a class="adm-brand" href="/" aria-label="VOYD CORP, back to the studio site">
+        <span class="adm-brand__mark">VC</span>
+        <span class="adm-brand__text">
+          <strong>VOYD CORP</strong>
+          <em>Submission review</em>
+        </span>
+      </a>
+      <div class="adm-header__tools">
+        <a class="adm-link" href="/testimonials">View public page ↗</a>
+        <button class="adm-button adm-button--ghost" id="lock" type="button" hidden>Lock</button>
+      </div>
+    </div>
+  </header>
+
+  <main id="main" class="adm-main">
+
+    <section class="adm-gate" id="gate" aria-labelledby="gate-title">
+      <div class="adm-gate__card">
+        <p class="adm-gate__kicker">Restricted</p>
+        <h1 class="adm-gate__title" id="gate-title">Review access</h1>
+        <p class="adm-gate__lede">
+          This page is where submissions land before they are public. It needs the studio's admin
+          token to reach the server. The token is sent as a bearer credential and is never stored
+          anywhere except this browser tab's session storage.
+        </p>
+        <form class="adm-gate__form" id="gate-form" novalidate>
+          <label class="adm-field">
+            <span class="adm-field__label">Admin token</span>
+            <input id="token" type="password" autocomplete="off" spellcheck="false"
+              placeholder="Paste your VOYD_ADMIN_TOKEN" aria-describedby="gate-hint">
+          </label>
+          <label class="adm-field adm-field--inline">
+            <input id="remember" type="checkbox">
+            <span>Remember on this device (session storage)</span>
+          </label>
+          <button class="adm-button adm-button--ink" id="gate-submit" type="submit">
+            <span id="gate-label">Unlock review</span>
+          </button>
+          <p class="adm-gate__hint" id="gate-hint">
+            The server compares the token in constant time. If it is wrong you get a plain refusal
+            and nothing else. If administration is not configured on the deployment, you will be told
+            that instead.
+          </p>
+        </form>
+        <div class="adm-alert" id="gate-error" role="alert" hidden></div>
+      </div>
+    </section>
+
+    <section class="adm-app" id="app" hidden>
+      <div class="adm-app__topbar">
+        <div class="adm-app__intro">
+          <h1 class="adm-app__title">Submissions</h1>
+          <p class="adm-app__sub">Nothing here is public until it is approved and published.</p>
+        </div>
+        <div class="adm-app__stats" id="stats" aria-live="polite">
+          <span class="adm-stat" data-state="pending"><strong id="stat-pending">0</strong> pending</span>
+          <span class="adm-stat" data-state="approved"><strong id="stat-approved">0</strong> approved</span>
+          <span class="adm-stat" data-state="published"><strong id="stat-published">0</strong> published</span>
+          <span class="adm-stat" data-state="rejected"><strong id="stat-rejected">0</strong> rejected</span>
+        </div>
+      </div>
+
+      <div class="adm-toolbar">
+        <div class="adm-filters" role="tablist" aria-label="Filter submissions">
+          <button class="adm-filter is-active" role="tab" aria-selected="true" data-filter="pending">Pending</button>
+          <button class="adm-filter" role="tab" aria-selected="false" data-filter="approved">Approved</button>
+          <button class="adm-filter" role="tab" aria-selected="false" data-filter="rejected">Rejected</button>
+          <button class="adm-filter" role="tab" aria-selected="false" data-filter="all">All</button>
+        </div>
+        <div class="adm-toolbar__right">
+          <label class="adm-search">
+            <span class="adm-visually-hidden">Search submissions</span>
+            <input id="search" type="search" placeholder="Search name, project, or text…" autocomplete="off">
+          </label>
+          <button class="adm-button adm-button--ghost" id="refresh" type="button">Refresh</button>
+        </div>
+      </div>
+
+      <p class="adm-banner" id="driver-banner" hidden></p>
+
+      <div class="adm-status" id="list-status" role="status" aria-live="polite">Loading submissions…</div>
+
+      <div class="adm-layout">
+        <div class="adm-col adm-col--list">
+          <ul class="adm-list" id="list" hidden></ul>
+          <div class="adm-empty" id="list-empty" hidden>
+            <h2>Nothing here.</h2>
+            <p id="list-empty-text">No submissions match this view yet.</p>
+          </div>
+        </div>
+
+        <aside class="adm-col adm-col--detail" id="detail" aria-live="polite">
+          <div class="adm-detail__blank" id="detail-blank">
+            <p>Select a submission to review it, check its link, edit anything that needs editing, and decide what happens next.</p>
+          </div>
+          <div class="adm-detail" id="detail-body" hidden></div>
+        </aside>
+      </div>
+    </section>
+  </main>
+
+  <div class="toast" id="toast" role="status" aria-live="polite">Copied.</div>
+
+  <noscript>
+    <div class="adm-noscript">This review page needs JavaScript to talk to the API. The server itself never serves a no-JS version of private data.</div>
+  </noscript>
+</body>
+</html>

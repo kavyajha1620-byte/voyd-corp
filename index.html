@@ -25,10 +25,11 @@
   <link rel="preload" href="assets/fonts/bricolage-grotesque-latin.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="assets/fonts/instrument-serif-italic-latin.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="assets/fonts/manrope-latin.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="preload" href="assets/us-couple-avatar.jpg" as="image" type="image/jpeg">
   <script>document.documentElement.classList.add("js");</script>
   <link rel="stylesheet" href="assets/styles.css">
   <script defer src="assets/main.js"></script>
+  <script defer src="assets/reviews.js"></script>
+  <script type="module" src="assets/hero-sculpture.js"></script>
 </head>
 <body>
   <div class="page-intro" aria-hidden="true">
@@ -54,6 +55,7 @@
         <a href="#approach">Our Approach</a>
         <a href="#about">About Us</a>
         <a href="#experiments">Experiments</a>
+        <a href="#reviews">You Said It</a>
         <a href="#contact">Contact</a>
       </nav>
 
@@ -75,7 +77,8 @@
         <a href="#approach"><span>03</span>Our Approach</a>
         <a href="#about"><span>04</span>About Us</a>
         <a href="#experiments"><span>05</span>Experiments</a>
-        <a href="#contact"><span>06</span>Contact</a>
+        <a href="#reviews"><span>06</span>You Said It</a>
+        <a href="#contact"><span>07</span>Contact</a>
       </nav>
       <div class="mobile-menu__foot">
         <a href="mailto:workwithkavyajha@gmail.com">workwithkavyajha@gmail.com</a>
@@ -123,33 +126,46 @@
           </div>
         </div>
 
-        <div class="portrait-stage" data-portrait-stage data-reveal>
-          <div class="portrait-orbit portrait-orbit--one" aria-hidden="true"></div>
-          <div class="portrait-orbit portrait-orbit--two" aria-hidden="true"></div>
-          <span class="spark spark--one" aria-hidden="true">✦</span>
-          <span class="spark spark--two" aria-hidden="true">✦</span>
-          <span class="spark spark--three" aria-hidden="true">＋</span>
-
-          <div class="portrait-tilt" data-portrait-tilt>
-            <figure class="portrait-card" data-portrait-card>
-              <span class="portrait-tape" aria-hidden="true"></span>
-              <div class="portrait-image">
-                <img id="hero-portrait" src="assets/us-couple-avatar.jpg" alt="Portrait of the two people behind VOYD CORP, wearing black hoodies" width="1254" height="1254" fetchpriority="high">
-              </div>
-              <figcaption>
-                <span class="figcaption-name">VOYD CORP</span>
-                <span class="figcaption-role">Design &amp; build, together</span>
-              </figcaption>
-            </figure>
+        <div class="hero-sculpture" data-hero-sculpture data-reveal>
+          <div class="sculpture-annotations" aria-hidden="true">
+            <div class="annotation annotation--tl">
+              <span class="annotation__label">App development</span>
+              <span class="annotation__line"></span>
+              <span class="annotation__dot"></span>
+            </div>
+            <div class="annotation annotation--tr">
+              <span class="annotation__label">Website development</span>
+              <span class="annotation__line"></span>
+              <span class="annotation__dot"></span>
+            </div>
+            <div class="annotation annotation--bl">
+              <span class="annotation__label">AI automation</span>
+              <span class="annotation__line"></span>
+              <span class="annotation__dot"></span>
+            </div>
+            <div class="annotation annotation--br">
+              <span class="annotation__label">Social media marketing</span>
+              <span class="annotation__line"></span>
+              <span class="annotation__dot"></span>
+            </div>
           </div>
 
-          <div class="portrait-sticker" aria-hidden="true">
-            <span class="sticker-star">✦</span>
-            <span>Good websites<br>start with a question.</span>
+          <div class="sculpture-stage">
+            <div class="sculpture-glow" aria-hidden="true"></div>
+            <div class="sculpture-shadow" aria-hidden="true"></div>
+            <canvas class="sculpture-canvas" data-sculpture-canvas aria-hidden="true"></canvas>
+            <div class="sculpture-fallback" aria-hidden="true">
+              <span class="sculpture-fallback__word">VOYD</span>
+              <span class="sculpture-fallback__orbit"></span>
+            </div>
           </div>
 
-          <div class="portrait-pill">Two-person studio</div>
+          <p class="sr-only">
+            A sculptural rendering of the letters VOYD in glossy cobalt blue, encircled by transparent
+            glass rings and floating reflective spheres.
+          </p>
         </div>
+
       </div>
 
       <div class="hero-foot" data-reveal>
@@ -914,10 +930,81 @@
       </div>
     </section>
 
+    <section class="section reviews-section" id="reviews" aria-labelledby="reviews-title">
+      <div class="section-head">
+        <p class="section-index" data-reveal>06 / You Said It</p>
+        <div class="section-heading" data-reveal>
+          <h2 id="reviews-title">You Said It, <em>Not Us.</em></h2>
+          <p class="section-lede">
+            This is where the people we build for share their side of the story: written by them,
+            shown with their consent, and published only after we approve it. Until a real review
+            lands, we would rather show you the work itself.
+          </p>
+        </div>
+      </div>
+
+      <div class="work-showcase" id="work-showcase" data-reveal>
+        <div class="work-showcase__head">
+          <h3 class="work-showcase__title">The Work <em>Speaks.</em></h3>
+          <p class="work-showcase__note">
+            Ten self-initiated concept builds, live and clickable. These are VOYD CORP's own
+            projects — not customer testimonials.
+          </p>
+        </div>
+        <ul class="work-list" id="work-list"></ul>
+      </div>
+
+      <div class="reviews-rail" id="reviews-rail">
+        <div class="reviews-status" id="reviews-status" role="status" aria-live="polite">
+          <div class="reviews-skeleton" aria-hidden="true">
+            <span></span><span></span><span></span>
+          </div>
+          <p class="reviews-status__text">Loading published reviews…</p>
+        </div>
+
+        <ul class="reviews-list" id="reviews-list" hidden></ul>
+
+        <div class="reviews-empty" id="reviews-empty" hidden>
+          <p class="reviews-empty__index">00 — Awaiting first review</p>
+          <h3 class="reviews-empty__title">Good work deserves <em>an honest word.</em></h3>
+          <p class="reviews-empty__body">
+            Have worked with VOYD? Share your experience. Every review here is submitted by a real
+            client and appears only once we have approved it.
+          </p>
+          <div class="reviews-empty__actions">
+            <button class="button button--ink" type="button" data-reviews-open-form>
+              <span>Share your experience</span>
+              <span class="button-arrow" aria-hidden="true">↗</span>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="reviews-foot">
+        <div class="reviews-foot__meta">
+          <p><span class="reviews-count" id="reviews-count" aria-live="polite">0</span> published.
+            Consent first, publish second.</p>
+          <p class="reviews-foot__note" id="reviews-note"></p>
+        </div>
+        <div class="reviews-controls" id="reviews-controls" hidden>
+          <button class="reviews-control" id="reviews-more" type="button">
+            <span>Show more reviews</span><span aria-hidden="true">→</span>
+          </button>
+        </div>
+        <div class="reviews-cta">
+          <button class="button button--outline" type="button" data-reviews-open-form>
+            <span>Share your experience</span>
+            <span class="button-arrow" aria-hidden="true">↗</span>
+          </button>
+          <a class="text-link" href="/testimonials">See every published review, with live sites ↗</a>
+        </div>
+      </div>
+    </section>
+
     <section class="contact-section" id="contact" aria-labelledby="contact-title">
       <div class="contact-inner">
         <div class="contact-copy" data-reveal>
-          <p class="section-index section-index--light">06 / Contact</p>
+          <p class="section-index section-index--light">07 / Contact</p>
           <h2 id="contact-title">Let’s make something<br><em>worth clicking.</em></h2>
           <p class="contact-lede">
             Have a website, a redesign, or an odd little idea in mind? Tell us what you are building and what it needs to do. We read every message ourselves.
@@ -968,6 +1055,7 @@
         <a href="#approach">Our Approach</a>
         <a href="#about">About Us</a>
         <a href="#experiments">Experiments</a>
+        <a href="#reviews">You Said It</a>
         <a href="#contact">Contact</a>
       </nav>
     </div>
@@ -999,6 +1087,10 @@
               <div><dt>Build</dt><dd id="case-build"></dd></div>
               <div><dt>Year</dt><dd id="case-year"></dd></div>
             </dl>
+            <a class="button button--ink button--small case-live" id="case-live" hidden>
+              <span>View live site</span>
+              <span class="button-arrow" aria-hidden="true">↗</span>
+            </a>
           </div>
         </div>
         <div class="case-body" id="case-body"></div>

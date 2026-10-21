@@ -16,6 +16,7 @@
       scope: "One-page site, menu hierarchy, booking flow",
       build: "HTML, CSS, light JavaScript",
       year: "2026",
+      live: "/projects/saffron-and-stone",
       sections: [
         {
           label: "Objective",
@@ -106,6 +107,7 @@
       scope: "Storefront, product page, cart interaction",
       build: "Responsive commerce layout, accessible controls",
       year: "2026",
+      live: "/projects/lumen-skincare",
       sections: [
         {
           label: "Objective",
@@ -201,7 +203,11 @@
     const progress = qs("#scroll-progress-bar");
     const navLinks = qsa(".desktop-nav a");
     const sections = navLinks
-      .map((link) => ({ link, section: qs(link.getAttribute("href")) }))
+      .map((link) => {
+        const href = link.getAttribute("href") || "";
+        const section = href.length > 1 && href.startsWith("#") ? qs(href) : null;
+        return { link, section };
+      })
       .filter((item) => item.section);
     let ticking = false;
 
@@ -224,6 +230,7 @@
         current = sections.length ? sections[sections.length - 1].link.getAttribute("href") : current;
       }
       navLinks.forEach((link) => {
+        if (link.getAttribute("aria-current") === "page") return;
         if (link.getAttribute("href") === current) {
           link.setAttribute("aria-current", "location");
         } else {
@@ -704,6 +711,7 @@
     const scope = qs("#case-scope");
     const build = qs("#case-build");
     const year = qs("#case-year");
+    const liveLink = qs("#case-live");
     const body = qs("#case-body");
     const scroll = qs("#case-scroll");
     const prev = qs("#case-prev");
@@ -725,6 +733,16 @@
       scope.textContent = data.scope;
       build.textContent = data.build;
       year.textContent = data.year;
+
+      if (liveLink) {
+        if (data.live) {
+          liveLink.href = data.live;
+          liveLink.hidden = false;
+        } else {
+          liveLink.hidden = true;
+          liveLink.removeAttribute("href");
+        }
+      }
 
       preview.innerHTML = "";
       const source = qs(`.project-card[data-project="${slug}"] .project-visual`);

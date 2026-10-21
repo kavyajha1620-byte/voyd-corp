@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Fable &amp; Moss — Interior design studio</title>
+  <meta name="description" content="Fable &amp; Moss is a concept interior-design studio site built by VOYD CORP: a portfolio, a services breakdown, and a working demo enquiry form. Independent concept project.">
+  <meta name="robots" content="noindex">
+  <meta name="theme-color" content="#f3efe9">
+  <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/projects/fable-and-moss/fable.css">
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+
+  <div class="demo-ribbon" role="note">
+    <span>VOYD concept project — demo design studio</span>
+    <a href="/testimonials">Back to the showcase</a>
+  </div>
+
+  <header class="site">
+    <div class="wrap nav">
+      <a class="brand" href="#top">FABLE <span>&amp;</span> MOSS</a>
+      <nav class="links" aria-label="Primary">
+        <a href="#work">Work</a>
+        <a href="#services">Services</a>
+        <a href="#contact">Contact</a>
+      </nav>
+      <button class="btn" id="enq-open" type="button">Start a project</button>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="hero" id="top">
+      <div class="wrap hero__inner">
+        <p class="eyebrow">Residential interiors &amp; styling</p>
+        <h1>Rooms that feel<br><em>like someone lives here.</em></h1>
+        <p class="lede">We design homes around how people actually move through them — light, storage, and quiet. Browse the portfolio, then send a brief.</p>
+      </div>
+      <div class="hero__band" aria-hidden="true"></div>
+    </section>
+
+    <section class="section" id="work" aria-labelledby="w-title">
+      <div class="wrap">
+        <div class="section-head">
+          <p class="eyebrow">Selected work</p>
+          <h2 id="w-title">The <em>portfolio</em></h2>
+          <p class="muted">Filter by room. Every project opens to a full write-up.</p>
+        </div>
+        <div class="filters" aria-label="Filter by room">
+          <button class="chip is-active" data-filter="all">All</button>
+          <button class="chip" data-filter="living">Living</button>
+          <button class="chip" data-filter="kitchen">Kitchen</button>
+          <button class="chip" data-filter="bedroom">Bedroom</button>
+          <button class="chip" data-filter="studio">Studio</button>
+        </div>
+        <div class="portfolio" id="portfolio"></div>
+        <p class="empty" id="empty" hidden>No projects in that room yet.</p>
+      </div>
+    </section>
+
+    <section class="section section--tint" id="services" aria-labelledby="svc-title">
+      <div class="wrap">
+        <div class="section-head"><p class="eyebrow">Services</p><h2 id="svc-title">How we <em>work</em></h2></div>
+        <div class="services">
+          <article><h3>Full design</h3><p>Concept through to installation. Layouts, joinery drawings, sourcing, and site coordination.</p></article>
+          <article><h3>Design clinic</h3><p>A single session to solve one room — palette, layout, and a shopping list you can action.</p></article>
+          <article><h3>Styling only</h3><p>Furniture, textiles, and finishing for a space that's already built.</p></article>
+        </div>
+        <div class="steps">
+          <div><span>01</span>Brief &amp; site visit</div>
+          <div><span>02</span>Concept &amp; palette</div>
+          <div><span>03</span>Drawings &amp; sourcing</div>
+          <div><span>04</span>Install &amp; styling</div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="foot" id="contact">
+    <div class="wrap foot__inner">
+      <span>FABLE &amp; MOSS — a VOYD CORP concept project</span>
+      <button class="link-btn" id="enq-open-2" type="button">Start a project ↗</button>
+    </div>
+  </footer>
+
+  <dialog class="dialog" id="project" aria-labelledby="p-title">
+    <div class="dialog__inner">
+      <button class="dialog__close" id="p-close" type="button" aria-label="Close">Close ×</button>
+      <div class="dialog__art" id="p-art" aria-hidden="true"></div>
+      <div class="dialog__body">
+        <p class="eyebrow" id="p-room">—</p>
+        <h2 id="p-title">—</h2>
+        <dl class="p-meta" id="p-meta"></dl>
+        <p id="p-desc"></p>
+        <ul class="p-feats" id="p-feats"></ul>
+      </div>
+    </div>
+  </dialog>
+
+  <dialog class="dialog dialog--sm" id="enquiry" aria-labelledby="enq-title">
+    <div class="enq">
+      <button class="dialog__close" id="enq-close" type="button" aria-label="Close">Close ×</button>
+      <h2 id="enq-title">Start a project</h2>
+      <p class="muted">Tell us about the space. This is a demo form — nothing is sent to a real studio.</p>
+      <form id="enq-form" novalidate>
+        <label>Name<input name="name" required autocomplete="name"></label>
+        <label>Email<input type="email" name="email" required autocomplete="email"></label>
+        <label>Project type
+          <select name="type" required>
+            <option value="">Choose…</option>
+            <option>Full design</option><option>Design clinic</option><option>Styling only</option>
+          </select>
+        </label>
+        <label>Budget
+          <select name="budget" required>
+            <option value="">Choose…</option>
+            <option>Under $10k</option><option>$10k–$25k</option>
+            <option>$25k–$50k</option><option>$50k+</option>
+          </select>
+        </label>
+        <label>About the space<textarea name="brief" rows="3" required placeholder="Rooms, size, what's not working"></textarea></label>
+        <p class="co-msg" data-form-status hidden></p>
+        <button class="btn btn--full" type="submit">Send brief (demo)</button>
+      </form>
+    </div>
+  </dialog>
+
+  <script src="/projects/js/store.js"></script>
+  <script src="/projects/fable-and-moss/fable.js"></script>
+</body>
+</html>

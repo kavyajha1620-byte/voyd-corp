@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>MERIDIAN — Modern wardrobe</title>
+  <meta name="description" content="MERIDIAN is a concept fashion label built by VOYD CORP: an editorial lookbook, a size-aware product catalogue, and a working demo bag. Independent concept project.">
+  <meta name="robots" content="noindex">
+  <meta name="theme-color" content="#f4f1ec">
+  <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/projects/meridian-fashion/meridian.css">
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+
+  <div class="demo-ribbon" role="note">
+    <span>VOYD concept project — demo wardrobe</span>
+    <a href="/testimonials">Back to the showcase</a>
+  </div>
+
+  <header class="site">
+    <div class="wrap nav">
+      <a class="brand" href="#top">MERIDIAN</a>
+      <nav class="links" aria-label="Primary">
+        <a href="#lookbook">Lookbook</a>
+        <a href="#shop">Shop</a>
+        <a href="#fit">Fit guide</a>
+      </nav>
+      <button class="bag-btn" id="cart-open" type="button">Bag <span id="cart-count">0</span></button>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="hero" id="top">
+      <div class="wrap hero__grid">
+        <div class="hero__copy">
+          <p class="kicker">Spring / Concept collection</p>
+          <h1>Clothes that<br>hold their shape.</h1>
+          <p class="lede">A tight edit of wardrobe staples — cut once, cut well. Every piece lists its fabric, its fit, and how it runs, so you can order with confidence.</p>
+          <div class="hero__cta">
+            <a class="btn" href="#shop">Shop the edit</a>
+            <a class="btn btn--line" href="#lookbook">View lookbook</a>
+          </div>
+        </div>
+        <div class="hero__art" aria-hidden="true">
+          <div class="look look--a"></div>
+          <div class="look look--b"></div>
+          <div class="look look--c"></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="ticker" aria-hidden="true">
+      <div class="ticker__track">
+        <span>Organic cotton</span><span>·</span><span>Relaxed fit</span><span>·</span><span>Made in small runs</span><span>·</span><span>Free returns within the demo</span><span>·</span><span>Considered fabric</span><span>·</span>
+        <span>Organic cotton</span><span>·</span><span>Relaxed fit</span><span>·</span><span>Made in small runs</span><span>·</span><span>Free returns within the demo</span><span>·</span><span>Considered fabric</span><span>·</span>
+      </div>
+    </section>
+
+    <section class="section" id="lookbook" aria-labelledby="lb-title">
+      <div class="wrap">
+        <div class="section-head"><h2 id="lb-title">The lookbook</h2><p class="muted">Three looks, styled from the shop below.</p></div>
+        <div class="lookbook">
+          <figure class="lb lb--1"><figcaption><strong>Look 01</strong><span>Everyday, layered</span></figcaption></figure>
+          <figure class="lb lb--2"><figcaption><strong>Look 02</strong><span>Clean, monochrome</span></figcaption></figure>
+          <figure class="lb lb--3"><figcaption><strong>Look 03</strong><span>Off-duty tailoring</span></figcaption></figure>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--shop" id="shop" aria-labelledby="shop-title">
+      <div class="wrap">
+        <div class="section-head">
+          <h2 id="shop-title">Shop</h2>
+          <p class="muted">Pick a size to add to your bag.</p>
+        </div>
+        <div class="toolbar">
+          <div class="filters" aria-label="Filter by category">
+            <button class="chip is-active" data-filter="all">All</button>
+            <button class="chip" data-filter="tops">Tops</button>
+            <button class="chip" data-filter="bottoms">Bottoms</button>
+            <button class="chip" data-filter="outerwear">Outerwear</button>
+            <button class="chip" data-filter="knitwear">Knitwear</button>
+          </div>
+        </div>
+        <div class="grid" id="grid"></div>
+        <p class="empty" id="empty" hidden>Nothing in that category yet.</p>
+      </div>
+    </section>
+
+    <section class="section" id="fit" aria-labelledby="fit-title">
+      <div class="wrap fit">
+        <div>
+          <p class="kicker">Fit guide</p>
+          <h2 id="fit-title">Know your size,<br>before you order.</h2>
+        </div>
+        <div class="fit__body">
+          <p>Each product states how it runs — true to size, relaxed, or sized up. The table below is the concept label's reference measurement set.</p>
+          <div class="table-wrap">
+            <table>
+              <caption class="sr-only">Size reference chart</caption>
+              <thead><tr><th>Size</th><th>Chest</th><th>Waist</th><th>Length</th></tr></thead>
+              <tbody>
+                <tr><td>XS</td><td>86 cm</td><td>68 cm</td><td>62 cm</td></tr>
+                <tr><td>S</td><td>92 cm</td><td>74 cm</td><td>64 cm</td></tr>
+                <tr><td>M</td><td>98 cm</td><td>80 cm</td><td>66 cm</td></tr>
+                <tr><td>L</td><td>104 cm</td><td>86 cm</td><td>68 cm</td></tr>
+                <tr><td>XL</td><td>110 cm</td><td>92 cm</td><td>70 cm</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <p class="muted tiny2">Concept reference only. This is a demo storefront and no garments are sold or shipped.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="foot">
+    <div class="wrap foot__inner">
+      <span>MERIDIAN — a VOYD CORP concept project</span>
+      <a href="/testimonials">See more concept work ↗</a>
+    </div>
+  </footer>
+
+  <dialog class="dialog" id="detail" aria-labelledby="d-title">
+    <div class="dialog__inner">
+      <button class="dialog__close" id="d-close" type="button" aria-label="Close">Close ×</button>
+      <div class="dialog__art" id="d-art" aria-hidden="true"></div>
+      <div class="dialog__body">
+        <p class="kicker" id="d-cat">—</p>
+        <h2 id="d-title">—</h2>
+        <p class="dialog__price" id="d-price">—</p>
+        <p id="d-desc"></p>
+        <dl class="spec" id="d-spec"></dl>
+        <fieldset class="sizes" id="d-sizes">
+          <legend>Size</legend>
+        </fieldset>
+        <p class="field-error" id="d-error" hidden>Choose a size before adding to your bag.</p>
+        <div class="dialog__row">
+          <button class="btn" id="d-add" type="button">Add to bag</button>
+        </div>
+      </div>
+    </div>
+  </dialog>
+
+  <div class="drawer" id="drawer" role="dialog" aria-modal="true" aria-labelledby="bag-title" hidden>
+    <div class="drawer__scrim" data-close></div>
+    <div class="drawer__panel">
+      <div class="drawer__top">
+        <h2 id="bag-title">Your bag</h2>
+        <button class="dialog__close" type="button" data-close aria-label="Close">Close ×</button>
+      </div>
+      <div class="drawer__body" id="drawer-items"></div>
+      <div class="drawer__foot">
+        <div class="sum-row"><span>Subtotal</span><strong id="subtotal">$0.00</strong></div>
+        <button class="btn btn--full" id="co-open" type="button">Checkout (demo)</button>
+        <p class="tiny">Demo checkout. No payment is taken and no order is created.</p>
+      </div>
+    </div>
+  </div>
+
+  <dialog class="dialog dialog--sm" id="checkout" aria-labelledby="co-title">
+    <div class="co">
+      <button class="dialog__close" id="co-close" type="button" aria-label="Close">Close ×</button>
+      <h2 id="co-title">Demo checkout</h2>
+      <p class="muted">Fill this in to see the demo order confirmation. No real payment details are collected.</p>
+      <form id="co-form" novalidate>
+        <label>Full name<input name="name" required autocomplete="name"></label>
+        <label>Email<input type="email" name="email" required autocomplete="email"></label>
+        <label>Address<input name="address" required autocomplete="street-address"></label>
+        <div data-order-summary class="co-summary"></div>
+        <p class="co-msg" data-checkout-message hidden></p>
+        <button class="btn btn--full" type="submit">Place demo order</button>
+      </form>
+    </div>
+  </dialog>
+
+  <script src="/projects/js/store.js"></script>
+  <script src="/projects/meridian-fashion/meridian.js"></script>
+</body>
+</html>

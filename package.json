@@ -5,5 +5,8 @@
   "description": "Website for VOYD CORP, an independent two-person creative studio.",
   "scripts": {
     "start": "node server.js"
+  },
+  "engines": {
+    "node": ">=20.6.0"
   }
 }

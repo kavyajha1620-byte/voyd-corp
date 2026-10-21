@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Northbeam — Deployment intelligence</title>
+  <meta name="description" content="Northbeam is a concept SaaS product site built by VOYD CORP: a product tour, pricing with a billing toggle, and a working demo sign-up flow. Independent concept project.">
+  <meta name="robots" content="noindex">
+  <meta name="theme-color" content="#0a0b10">
+  <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/projects/northbeam-saas/northbeam.css">
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+
+  <div class="demo-ribbon" role="note">
+    <span>VOYD concept project — demo SaaS product</span>
+    <a href="/testimonials">Back to the showcase</a>
+  </div>
+
+  <header class="site">
+    <div class="wrap nav">
+      <a class="brand" href="#top"><span class="brand__mark"></span>NORTHBEAM</a>
+      <nav class="links" aria-label="Primary">
+        <a href="#product">Product</a>
+        <a href="#pricing">Pricing</a>
+        <a href="#faq">FAQ</a>
+      </nav>
+      <button class="btn" id="signup-open" type="button">Start free</button>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="hero" id="top">
+      <div class="hero__grid-bg" aria-hidden="true"></div>
+      <div class="wrap hero__inner">
+        <span class="pill">● New — deployment risk scoring</span>
+        <h1>Ship with<br><em>evidence, not hope.</em></h1>
+        <p class="lede">Northbeam watches every deploy and flags the change that broke production — before your users find it. Concept product, fully built front-end.</p>
+        <div class="hero__cta">
+          <button class="btn btn--lg" id="signup-open-2" type="button">Start free (demo)</button>
+          <a class="btn btn--ghost btn--lg" href="#product">See how it works</a>
+        </div>
+        <p class="hero__note">No card required · Demo sign-up only</p>
+      </div>
+
+      <div class="wrap hero__product" aria-hidden="true">
+        <div class="app">
+          <div class="app__bar"><span></span><span></span><span></span><em>northbeam / deploys</em></div>
+          <div class="app__body">
+            <div class="app__side">
+              <div class="app__item is-on"></div><div class="app__item"></div><div class="app__item"></div><div class="app__item"></div>
+            </div>
+            <div class="app__main">
+              <div class="app__row"><span class="dot dot--ok"></span><span class="app__label">api-gateway</span><span class="app__meta">healthy · 42ms</span></div>
+              <div class="app__row"><span class="dot dot--warn"></span><span class="app__label">payments-worker</span><span class="app__meta">elevated · 380ms</span></div>
+              <div class="app__row"><span class="dot dot--bad"></span><span class="app__label">search-index</span><span class="app__meta">failing · 5xx</span></div>
+              <div class="app__chart">
+                <span style="height:36%"></span><span style="height:58%"></span><span style="height:44%"></span><span style="height:72%"></span><span style="height:88%"></span><span style="height:52%"></span><span style="height:64%"></span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="logos" aria-label="Concept integrations">
+      <div class="wrap logos__row">
+        <span>Works with your stack</span>
+        <em>GitHub</em><em>GitLab</em><em>Slack</em><em>Datadog</em><em>Linear</em><em>PagerDuty</em>
+      </div>
+    </section>
+
+    <section class="section" id="product" aria-labelledby="p-title">
+      <div class="wrap">
+        <div class="section-head"><p class="kicker">The product</p><h2 id="p-title">Three things it does <em>well</em></h2></div>
+        <div class="features">
+          <article class="feature">
+            <div class="feature__icon" data-i="1" aria-hidden="true"></div>
+            <h3>Deploy tracking</h3>
+            <p>Every release, mapped to the metrics that moved after it. See the exact commit behind the spike.</p>
+          </article>
+          <article class="feature">
+            <div class="feature__icon" data-i="2" aria-hidden="true"></div>
+            <h3>Risk scoring</h3>
+            <p>Changes are scored before they ship, using patterns from your own history — not a generic model.</p>
+          </article>
+          <article class="feature">
+            <div class="feature__icon" data-i="3" aria-hidden="true"></div>
+            <h3>Fast rollback signal</h3>
+            <p>When a deploy turns bad, Northbeam tells the right person in Slack within seconds.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="pricing" aria-labelledby="pr-title">
+      <div class="wrap">
+        <div class="section-head section-head--center">
+          <p class="kicker">Pricing</p>
+          <h2 id="pr-title">Straightforward <em>plans</em></h2>
+          <div class="billing">
+            <button class="bill is-active" id="bill-m" type="button" aria-pressed="true">Monthly</button>
+            <button class="bill" id="bill-y" type="button" aria-pressed="false">Annual <span>−20%</span></button>
+          </div>
+        </div>
+        <div class="plans" id="plans"></div>
+        <p class="muted center tiny">Concept pricing. No subscriptions are sold and no card is taken.</p>
+      </div>
+    </section>
+
+    <section class="section section--tint" id="faq" aria-labelledby="faq-title">
+      <div class="wrap">
+        <div class="section-head"><p class="kicker">FAQ</p><h2 id="faq-title">Questions, <em>answered</em></h2></div>
+        <div class="faq" id="faq-list"></div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="foot">
+    <div class="wrap foot__inner">
+      <span>NORTHBEAM — a VOYD CORP concept project</span>
+      <a href="/testimonials">See more concept work ↗</a>
+    </div>
+  </footer>
+
+  <dialog class="dialog" id="signup" aria-labelledby="su-title">
+    <div class="su">
+      <button class="dialog__close" id="su-close" type="button" aria-label="Close">Close ×</button>
+      <h2 id="su-title">Start free</h2>
+      <p class="muted">This demo sign-up does nothing real — no account is created and no email is sent.</p>
+      <form id="su-form" novalidate>
+        <label>Work email<input type="email" name="email" required autocomplete="email"></label>
+        <label>Company<input name="company" required autocomplete="organization"></label>
+        <label>Team size
+          <select name="size" required>
+            <option value="">Choose…</option>
+            <option>1–5</option><option>6–20</option><option>21–100</option><option>100+</option>
+          </select>
+        </label>
+        <label>What are you shipping?<textarea name="context" rows="2" placeholder="Optional — what you'd want Northbeam to watch"></textarea></label>
+        <p class="co-msg" data-form-status hidden></p>
+        <button class="btn btn--full" type="submit">Create demo workspace</button>
+      </form>
+    </div>
+  </dialog>
+
+  <script src="/projects/js/store.js"></script>
+  <script src="/projects/northbeam-saas/northbeam.js"></script>
+</body>
+</html>

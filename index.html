@@ -30,6 +30,7 @@
   <script defer src="assets/main.js"></script>
   <script defer src="assets/reviews.js"></script>
   <script type="module" src="assets/hero-sculpture.js"></script>
+  <script type="module" src="assets/about-sculpture.js"></script>
 </head>
 <body>
   <div class="page-intro" aria-hidden="true">
@@ -750,10 +751,16 @@
         <div class="journey-intro" data-reveal>
           <p class="journey-note">Between us, we cover design, front-end development, and the space where the two meet.</p>
           <p class="journey-signature">Two people.<br>One shared standard.</p>
-          <figure class="about-portrait">
-            <div class="about-portrait__frame">
-              <img src="assets/us-couple-avatar.jpg" alt="Portrait of the two people behind VOYD CORP, wearing black hoodies" width="1254" height="1254" loading="lazy" decoding="async">
+          <figure class="about-sculpture" data-about-sculpture data-reveal>
+            <div class="sculpture-stage">
+              <canvas class="sculpture-canvas" data-about-canvas aria-hidden="true"></canvas>
+              <div class="sculpture-fallback" aria-hidden="true">
+                <span class="sculpture-fallback__core"></span>
+                <span class="sculpture-fallback__ring sculpture-fallback__ring--a"></span>
+                <span class="sculpture-fallback__ring sculpture-fallback__ring--b"></span>
+              </div>
             </div>
+            <p class="sr-only">A real-time 3D kinetic sculpture: a glossy cobalt-blue sphere encircled by interlocking polished-silver and clear-glass orbital rings with thin metallic rods.</p>
             <figcaption>Two people. One studio.</figcaption>
           </figure>
         </div>

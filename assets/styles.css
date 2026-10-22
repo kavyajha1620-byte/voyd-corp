@@ -747,7 +747,8 @@ ol {
   transition: opacity 0.9s var(--ease-soft);
 }
 
-.hero-sculpture.is-ready .sculpture-canvas {
+.hero-sculpture.is-ready .sculpture-canvas,
+.about-sculpture.is-ready .sculpture-canvas {
   opacity: 1;
 }
 
@@ -789,11 +790,13 @@ ol {
   pointer-events: none;
 }
 
-.hero-sculpture.is-ready .sculpture-fallback {
+.hero-sculpture.is-ready .sculpture-fallback,
+.about-sculpture.is-ready .sculpture-fallback {
   display: none;
 }
 
-.hero-sculpture.is-fallback .sculpture-canvas {
+.hero-sculpture.is-fallback .sculpture-canvas,
+.about-sculpture.is-fallback .sculpture-canvas {
   display: none;
 }
 
@@ -816,6 +819,34 @@ ol {
   border: 1px solid rgba(33, 69, 216, 0.35);
   border-radius: 50%;
   transform: rotate(-18deg);
+}
+
+.sculpture-fallback__core {
+  position: relative;
+  z-index: 2;
+  width: 28%;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 28%, #8fa3ff, var(--cobalt) 62%);
+  box-shadow: 0 18px 38px rgba(23, 58, 212, 0.18);
+}
+
+.sculpture-fallback__ring {
+  position: absolute;
+  width: 62%;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  border: 1px solid rgba(26, 35, 62, 0.38);
+}
+
+.sculpture-fallback__ring--a {
+  transform: rotateX(62deg) rotateZ(-18deg);
+}
+
+.sculpture-fallback__ring--b {
+  width: 76%;
+  transform: rotateX(72deg) rotateZ(26deg);
+  border-color: rgba(33, 69, 216, 0.42);
 }
 
 /* ── Fine-line service annotations ───────────────────── */
@@ -2387,26 +2418,45 @@ button:disabled {
   color: var(--cobalt);
 }
 
-.about-portrait {
-  width: min(100%, 232px);
-  margin-top: 34px;
-  transform: rotate(-1.5deg);
+.about-sculpture {
+  position: relative;
+  width: min(100%, 320px);
+  margin-top: 38px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 18px;
 }
 
-.about-portrait__frame {
-  border: 1px solid var(--ink);
-  background: #f9f7ea;
-  box-shadow: 9px 10px 0 var(--ink);
+.about-sculpture .sculpture-stage {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1;
+  overflow: visible;
 }
 
-.about-portrait img {
+.about-sculpture .sculpture-canvas {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
   display: block;
   width: 100%;
-  height: auto;
+  height: 100%;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.9s var(--ease-soft);
 }
 
-.about-portrait figcaption {
-  margin-top: 16px;
+.about-sculpture .sculpture-fallback {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  display: grid;
+  place-items: center;
+  pointer-events: none;
+}
+
+.about-sculpture figcaption {
   font-size: 0.62rem;
   font-weight: 700;
   letter-spacing: 0.09em;

@@ -3431,6 +3431,30 @@ input[type="range"]::-moz-range-thumb {
   border-color: var(--cream);
 }
 
+/* Enlarge the tappable area of contact links without changing the layout:
+   on touch screens a 20px-tall link is too easy to miss. */
+@media (hover: none), (max-width: 760px) {
+  .contact-details a {
+    position: relative;
+  }
+
+  .contact-details a::after {
+    content: "";
+    position: absolute;
+    inset: -12px -10px;
+  }
+
+  .footer-links a {
+    position: relative;
+  }
+
+  .footer-links a::after {
+    content: "";
+    position: absolute;
+    inset: -14px -8px;
+  }
+}
+
 .contact-card__foot {
   margin-top: 26px;
   padding-top: 16px;

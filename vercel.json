@@ -3,5 +3,11 @@
   "buildCommand": null,
   "outputDirectory": ".",
   "cleanUrls": true,
-  "trailingSlash": false
+  "trailingSlash": false,
+  "rewrites": [
+    {
+      "source": "/google9ebcd36542cc58f1.html",
+      "destination": "/google9ebcd36542cc58f1"
+    }
+  ]
 }

@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Projects — Studio dashboard — VOYD CORP</title>
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="theme-color" content="#171711">
+  <meta name="color-scheme" content="light">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="preload" href="assets/fonts/bricolage-grotesque-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/fonts/instrument-serif-italic-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/fonts/manrope-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <script>document.documentElement.classList.add("js");</script>
+  <link rel="stylesheet" href="assets/testimonials-admin.css">
+  <link rel="stylesheet" href="assets/projects-admin.css">
+  <script defer src="assets/projects-admin.js"></script>
+</head>
+<body class="adm-page">
+
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="adm-header">
+    <div class="adm-header__inner">
+      <a class="adm-brand" href="/" aria-label="VOYD CORP, back to the studio site">
+        <span class="adm-brand__mark">VC</span>
+        <span class="adm-brand__text">
+          <strong>VOYD CORP</strong>
+          <em>Project dashboard</em>
+        </span>
+      </a>
+      <div class="adm-header__tools">
+        <a class="adm-link" href="/#services">View public showcase ↗</a>
+        <a class="adm-link" href="/testimonials-admin">Reviews ↗</a>
+        <button class="adm-button adm-button--ghost" id="lock" type="button" hidden>Lock</button>
+      </div>
+    </div>
+  </header>
+
+  <main id="main" class="adm-main">
+
+    <section class="adm-gate" id="gate" aria-labelledby="gate-title">
+      <div class="adm-gate__card">
+        <p class="adm-gate__kicker">Restricted</p>
+        <h1 class="adm-gate__title" id="gate-title">Project access</h1>
+        <p class="adm-gate__lede">
+          This is where projects are added to each service category before they appear on the
+          public showcase. It needs the same studio admin token as submission review. The token is
+          sent as a bearer credential and is stored only in this browser tab's session storage.
+        </p>
+        <form class="adm-gate__form" id="gate-form" novalidate>
+          <label class="adm-field">
+            <span class="adm-field__label">Admin token</span>
+            <input id="token" type="password" autocomplete="off" spellcheck="false"
+              placeholder="Paste your VOYD_ADMIN_TOKEN" aria-describedby="gate-hint">
+          </label>
+          <label class="adm-field adm-field--inline">
+            <input id="remember" type="checkbox">
+            <span>Remember on this device (session storage)</span>
+          </label>
+          <button class="adm-button adm-button--ink" id="gate-submit" type="submit">
+            <span id="gate-label">Unlock dashboard</span>
+          </button>
+          <p class="adm-gate__hint" id="gate-hint">
+            If the deployment has no storage backend configured, you will be told plainly instead
+            of being shown an empty list.
+          </p>
+        </form>
+        <div class="adm-alert" id="gate-error" role="alert" hidden></div>
+      </div>
+    </section>
+
+    <section class="adm-app" id="app" hidden>
+      <div class="adm-app__topbar">
+        <div class="adm-app__intro">
+          <h1 class="adm-app__title">Projects</h1>
+          <p class="adm-app__sub">One collection per service category. Drafts stay private until published.</p>
+        </div>
+        <div class="adm-app__stats" id="stats" aria-live="polite">
+          <span class="adm-stat" data-state="published"><strong id="stat-published">0</strong> published</span>
+          <span class="adm-stat" data-state="pending"><strong id="stat-drafts">0</strong> drafts</span>
+        </div>
+      </div>
+
+      <div class="adm-toolbar">
+        <label class="adm-search">
+          <span class="adm-visually-hidden">Search projects</span>
+          <input id="search" type="search" placeholder="Search project, category, or tech…" autocomplete="off">
+        </label>
+        <div class="adm-toolbar__right">
+          <button class="adm-button adm-button--ghost" id="refresh" type="button">Refresh</button>
+          <button class="adm-button adm-button--ink" id="new" type="button">New project</button>
+        </div>
+      </div>
+
+      <p class="adm-banner" id="driver-banner" hidden></p>
+
+      <div class="adm-status" id="list-status" role="status" aria-live="polite">Loading projects…</div>
+
+      <div class="adm-layout">
+        <div class="adm-col adm-col--list">
+          <ul class="adm-list" id="list" hidden></ul>
+          <div class="adm-empty" id="list-empty" hidden>
+            <h2>Nothing here yet.</h2>
+            <p id="list-empty-text">No projects match this view. Create one to start the collection.</p>
+          </div>
+        </div>
+
+        <aside class="adm-col adm-col--detail" id="detail" aria-live="polite">
+          <div class="adm-detail__blank" id="detail-blank">
+            <p>Select a project to edit it, or choose <strong>New project</strong> to add the first entry for a service category.</p>
+          </div>
+
+          <form class="adm-detail p-form" id="editor" hidden novalidate>
+            <div class="adm-detail__head">
+              <div>
+                <h2 class="adm-detail__title" id="editor-title">New project</h2>
+                <p class="adm-detail__sub" id="editor-sub">Not saved yet</p>
+              </div>
+              <div class="adm-detail__badges">
+                <span class="adm-badge" id="editor-badge" data-state="pending">Draft</span>
+              </div>
+            </div>
+
+            <input type="hidden" id="p-id" value="">
+
+            <div class="adm-section">
+              <p class="adm-section__title">Placement</p>
+              <div class="adm-grid2">
+                <label class="adm-field">
+                  <span class="adm-field__label">Service category</span>
+                  <select id="p-category" required></select>
+                </label>
+                <label class="adm-field">
+                  <span class="adm-field__label">Visibility</span>
+                  <select id="p-status">
+                    <option value="draft">Draft (private)</option>
+                    <option value="published">Published (public)</option>
+                  </select>
+                </label>
+              </div>
+            </div>
+
+            <div class="adm-section">
+              <p class="adm-section__title">Project</p>
+              <label class="adm-field">
+                <span class="adm-field__label">Project name</span>
+                <input id="p-title" type="text" maxlength="120" required autocomplete="off" placeholder="e.g. Project title">
+              </label>
+              <label class="adm-field">
+                <span class="adm-field__label">Short summary <span class="p-hint">up to 300 characters</span></span>
+                <textarea id="p-summary" maxlength="300" rows="2" placeholder="One sentence for the card."></textarea>
+              </label>
+              <label class="adm-field">
+                <span class="adm-field__label">Description <span class="p-hint">shown in the project dialog</span></span>
+                <textarea id="p-description" maxlength="4000" rows="5" placeholder="What the project is, how it works, and what it proves."></textarea>
+              </label>
+              <div class="adm-grid2">
+                <label class="adm-field">
+                  <span class="adm-field__label">Technologies <span class="p-hint">comma separated</span></span>
+                  <input id="p-tech" type="text" autocomplete="off" placeholder="HTML, CSS, JavaScript">
+                </label>
+                <label class="adm-field">
+                  <span class="adm-field__label">Live demo link</span>
+                  <input id="p-url" type="url" autocomplete="off" placeholder="https://…">
+                </label>
+              </div>
+            </div>
+
+            <div class="adm-section">
+              <p class="adm-section__title">Screenshots</p>
+              <p class="p-note">PNG, JPEG, or WebP. Up to 8, 3 MB each. The first one is used on the card.</p>
+              <label class="adm-field p-upload">
+                <span class="adm-field__label">Add screenshots</span>
+                <input id="p-files" type="file" accept="image/png,image/jpeg,image/webp" multiple>
+              </label>
+              <div class="p-thumbs" id="p-thumbs" hidden></div>
+              <p class="p-note" id="p-upload-status" hidden></p>
+            </div>
+
+            <div class="adm-errors" id="editor-errors" hidden></div>
+
+            <div class="adm-actions">
+              <div class="adm-actions__group">
+                <button class="adm-button adm-button--ink" id="save" type="submit">Save project</button>
+                <button class="adm-button adm-button--ghost" id="cancel" type="button">Close editor</button>
+              </div>
+              <button class="adm-button adm-button--danger adm-actions__danger" id="delete" type="button" hidden>Delete</button>
+            </div>
+          </form>
+        </aside>
+      </div>
+    </section>
+  </main>
+
+  <div class="toast" id="toast" role="status" aria-live="polite">Saved.</div>
+
+  <noscript>
+    <div class="adm-noscript">This dashboard needs JavaScript to talk to the API. The server itself never serves a no-JS version of private data.</div>
+  </noscript>
+</body>
+</html>

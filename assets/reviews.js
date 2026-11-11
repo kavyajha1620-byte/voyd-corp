@@ -7,101 +7,11 @@
   const BATCH = 6;
 
   /*
-   * VOYD CORP's own self-initiated concept websites.
+   * Genuine customer reviews only.
    *
-   * These are real, working sites we designed and built ourselves — not
-   * customer reviews. The homepage shows them here as a project showcase so
-   * visitors can see the actual work, with real live previews.
-   *
-   * Rules kept deliberately strict:
-   *   - No invented person names, job titles, locations, ratings, or photos.
-   *   - No fabricated quotations or invented customer experiences anywhere.
-   *   - Each entry is labelled as a concept build ONCE, at the section level,
-   *     rather than repeating a warning badge on every card.
+   * Every card comes from an approved, authenticated submission. Nothing here
+   * invents person names, job titles, locations, ratings, photos or quotations.
    */
-  const PROJECTS = [
-    {
-      id: "lumen",
-      category: "Skincare / DTC storefront",
-      project: "Lumen Skincare",
-      details:
-        "A storefront that leads with one simple benefit, then unfolds ingredients and ritual in the order a first-time buyer actually needs them.",
-      url: "/projects/lumen-skincare"
-    },
-    {
-      id: "atelier",
-      category: "Fine jewellery",
-      project: "Atelier Éclat",
-      details:
-        "A dark, editorial boutique where material filtering and price sorting do the quiet work, so the pieces stay the focus.",
-      url: "/projects/atelier-jewels"
-    },
-    {
-      id: "meridian",
-      category: "Fashion / Label",
-      project: "Meridian",
-      details:
-        "A lookbook-led wardrobe label with size-aware product detail and a working bag, kept calm instead of noisy.",
-      url: "/projects/meridian-fashion"
-    },
-    {
-      id: "saffron",
-      category: "Restaurant / Hospitality",
-      project: "Saffron & Stone",
-      details:
-        "A restaurant site that trades the usual menu grid for appetite, atmosphere, and a reason to book.",
-      url: "/projects/saffron-and-stone"
-    },
-    {
-      id: "halcyon",
-      category: "Boutique hotel",
-      project: "Halcyon House",
-      details:
-        "A coastal retreat with a date-range availability search and honest room rates that make booking feel effortless.",
-      url: "/projects/halcyon-house"
-    },
-    {
-      id: "ironbark",
-      category: "Auto detailing",
-      project: "Ironbark Detailing",
-      details:
-        "An interactive quote builder that updates as you choose, so the price feels transparent before anyone calls.",
-      url: "/projects/ironbark-detailing"
-    },
-    {
-      id: "fable",
-      category: "Interior design",
-      project: "Fable & Moss",
-      details:
-        "A filterable portfolio with full project write-ups, so the studio reads as considered rather than crowded.",
-      url: "/projects/fable-and-moss"
-    },
-    {
-      id: "pulse",
-      category: "Fitness studio",
-      project: "Pulse Studio",
-      details:
-        "A day-by-day timetable with class filtering that turns a wall of sessions into something you can actually book.",
-      url: "/projects/pulse-studio"
-    },
-    {
-      id: "northbeam",
-      category: "SaaS platform",
-      project: "Northbeam",
-      details:
-        "A product tour, a billing toggle, and a real interface preview in place of the usual pile of unproven adjectives.",
-      url: "/projects/northbeam-saas"
-    },
-    {
-      id: "woodwright",
-      category: "Furniture / Home",
-      project: "Woodwright & Loom",
-      details:
-        "A material-filtered catalogue with clear product specs, built for made-to-order work that needs explaining.",
-      url: "/projects/woodwright-loom"
-    }
-  ];
-
   const initialsOf = (name) => {
     const clean = String(name || "").replace(/[^A-Za-z\s]/g, " ").trim();
     if (!clean) return "VC";
@@ -136,86 +46,6 @@
     const parsed = new Date(value);
     if (Number.isNaN(parsed.getTime())) return "";
     return parsed.toLocaleDateString("en-IN", { year: "numeric", month: "short" });
-  };
-
-  /* ── Project showcase card ─────────────────────────────
-   * A real, live preview of one of our own concept builds.
-   * No testimonial language, no warning badges: the section
-   * labels the whole collection once.
-   */
-  const workCard = (entry) => {
-    const li = document.createElement("li");
-    li.className = "work-card";
-    li.dataset.reveal = "";
-
-    const preview = document.createElement("div");
-    preview.className = "work-card__preview";
-
-    const chrome = document.createElement("span");
-    chrome.className = "work-card__chrome";
-    chrome.setAttribute("aria-hidden", "true");
-    chrome.append(document.createElement("span"), document.createElement("span"), document.createElement("span"));
-    preview.append(chrome);
-
-    const link = safeUrl(entry.url);
-    if (link) {
-      const frame = document.createElement("iframe");
-      frame.className = "work-card__frame";
-      frame.src = link;
-      frame.title = `${entry.project} — live preview`;
-      frame.loading = "lazy";
-      frame.tabIndex = -1;
-      frame.setAttribute("scrolling", "no");
-      frame.setAttribute("aria-hidden", "true");
-      preview.append(frame);
-
-      const overlay = document.createElement("a");
-      overlay.className = "work-card__overlay";
-      overlay.href = link;
-      overlay.target = "_blank";
-      overlay.rel = "noopener noreferrer";
-      overlay.tabIndex = -1;
-      overlay.setAttribute("aria-hidden", "true");
-      preview.append(overlay);
-    }
-
-    li.append(preview);
-
-    const body = document.createElement("div");
-    body.className = "work-card__body";
-
-    const category = document.createElement("span");
-    category.className = "work-card__category";
-    category.textContent = entry.category;
-    body.append(category);
-
-    const project = document.createElement("h3");
-    project.className = "work-card__project";
-    project.textContent = entry.project;
-    body.append(project);
-
-    const details = document.createElement("p");
-    details.className = "work-card__details";
-    details.textContent = entry.details || "";
-    body.append(details);
-
-    li.append(body);
-
-    if (link) {
-      const visit = document.createElement("a");
-      visit.className = "work-card__link";
-      visit.href = link;
-      visit.target = "_blank";
-      visit.rel = "noopener noreferrer";
-      visit.textContent = "View live site";
-      const arrow = document.createElement("span");
-      arrow.setAttribute("aria-hidden", "true");
-      arrow.textContent = "↗";
-      visit.append(" ", arrow);
-      li.append(visit);
-    }
-
-    return li;
   };
 
   /* ── Genuine customer review card ──────────────────────
@@ -333,20 +163,7 @@
     const note = qs("#reviews-note");
     const controls = qs("#reviews-controls");
     const more = qs("#reviews-more");
-    const work = qs("#work-showcase");
-    if (!section || !list || !status || !empty || !work) return;
-
-    const workList = qs("#work-list");
-    if (workList) {
-      const fragment = document.createDocumentFragment();
-      const nodes = PROJECTS.map((project) => {
-        const node = workCard(project);
-        fragment.append(node);
-        return node;
-      });
-      workList.append(fragment);
-      applyReveal(nodes);
-    }
+    if (!section || !list || !status || !empty) return;
 
     qsa("[data-reviews-open-form]").forEach((button) =>
       button.addEventListener("click", () => {

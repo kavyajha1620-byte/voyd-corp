@@ -32,6 +32,7 @@ function backendFailed(detail) {
 function createFileSystemStore() {
   const root = dataDir();
   const dbFile = path.join(root, "db.json");
+  const projectsFile = path.join(root, "projects.json");
   const uploads = path.join(root, "uploads");
   let queue = Promise.resolve();
 
@@ -62,6 +63,24 @@ function createFileSystemStore() {
     await fs.rename(tmp, dbFile);
   }
 
+  async function readProjects() {
+    try {
+      const raw = await fs.readFile(projectsFile, "utf8");
+      const parsed = JSON.parse(raw);
+      return Array.isArray(parsed.projects) ? parsed.projects : [];
+    } catch (err) {
+      if (err.code === "ENOENT") return [];
+      throw backendFailed(String(err && err.message));
+    }
+  }
+
+  async function writeProjects(projects) {
+    await fs.mkdir(root, { recursive: true });
+    const tmp = `${projectsFile}.${process.pid}.tmp`;
+    await fs.writeFile(tmp, JSON.stringify({ version: 1, projects }, null, 2), "utf8");
+    await fs.rename(tmp, projectsFile);
+  }
+
   return {
     name: "filesystem",
     configured: true,
@@ -89,6 +108,32 @@ function createFileSystemStore() {
         const next = entries.filter((entry) => entry.id !== id);
         await writeAll(next);
         return next.length !== entries.length;
+      });
+    },
+    async listProjects() {
+      const projects = await readProjects();
+      return projects.sort((a, b) => String(b.createdAt).localeCompare(String(a.createdAt)));
+    },
+    async getProject(id) {
+      const projects = await readProjects();
+      return projects.find((project) => project.id === id) || null;
+    },
+    async putProject(record) {
+      return withLock(async () => {
+        const projects = await readProjects();
+        const index = projects.findIndex((project) => project.id === record.id);
+        if (index >= 0) projects[index] = record;
+        else projects.push(record);
+        await writeProjects(projects);
+        return record;
+      });
+    },
+    async removeProject(id) {
+      return withLock(async () => {
+        const projects = await readProjects();
+        const next = projects.filter((project) => project.id !== id);
+        await writeProjects(next);
+        return next.length !== projects.length;
       });
     },
     async putImage(id, buffer, mime, ext) {
@@ -134,7 +179,9 @@ function createFileSystemStore() {
 
 function createSupabaseStore(config) {
   const table = (process.env.SUPABASE_TABLE || "testimonials").trim();
+  const projectsTable = (process.env.SUPABASE_PROJECTS_TABLE || "projects").trim();
   const base = `${config.url}/rest/v1/${table}`;
+  const projectsBase = `${config.url}/rest/v1/${projectsTable}`;
   const storageBase = `${config.url}/storage/v1/object`;
 
   const headers = (extra) => ({
@@ -195,6 +242,35 @@ function createSupabaseStore(config) {
     },
     async remove(id) {
       await request(`${base}?id=eq.${encodeURIComponent(id)}`, { method: "DELETE", headers: headers() });
+      return true;
+    },
+    async listProjects() {
+      const rows = await request(`${projectsBase}?select=*&order=createdAt.desc`, { headers: headers() });
+      return Array.isArray(rows) ? rows.map((row) => row.data).filter((row) => row && row.id) : [];
+    },
+    async getProject(id) {
+      const rows = await request(`${projectsBase}?select=*&id=eq.${encodeURIComponent(id)}&limit=1`, {
+        headers: headers()
+      });
+      return Array.isArray(rows) && rows.length ? rows[0].data : null;
+    },
+    async putProject(record) {
+      const payload = { id: record.id, data: record, createdAt: record.createdAt };
+      const updated = await request(`${projectsBase}?id=eq.${encodeURIComponent(record.id)}`, {
+        method: "PATCH",
+        headers: headers({ Prefer: "return=representation" }),
+        body: JSON.stringify(payload)
+      });
+      if (Array.isArray(updated) && updated.length) return record;
+      await request(projectsBase, {
+        method: "POST",
+        headers: headers({ Prefer: "return=representation" }),
+        body: JSON.stringify(payload)
+      });
+      return record;
+    },
+    async removeProject(id) {
+      await request(`${projectsBase}?id=eq.${encodeURIComponent(id)}`, { method: "DELETE", headers: headers() });
       return true;
     },
     async putImage(id, buffer, mime, ext) {
@@ -259,6 +335,18 @@ function createDisabledStore() {
       throw notConfigured();
     },
     async remove() {
+      throw notConfigured();
+    },
+    async listProjects() {
+      return [];
+    },
+    async getProject() {
+      return null;
+    },
+    async putProject() {
+      throw notConfigured();
+    },
+    async removeProject() {
       throw notConfigured();
     },
     async putImage() {

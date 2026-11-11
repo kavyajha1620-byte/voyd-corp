@@ -1,0 +1,13 @@
+# VOYD CORP — https://www.voydcorp.host
+User-agent: *
+Allow: /
+
+# Private dashboards and APIs
+Disallow: /projects-admin
+Disallow: /testimonials-admin
+Disallow: /api/
+
+# Standalone project demo builds are not part of the public site
+Disallow: /projects/
+
+Sitemap: https://www.voydcorp.host/sitemap.xml

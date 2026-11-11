@@ -52,6 +52,24 @@ alter table public.testimonials enable row level security;
 -- No policies are added: only the service-role key (used by the serverless API)
 -- may read or write. The public site reads through the API, never this table.
 
+-- ── projects: one curated collection per service category ──────────────────
+-- A project is one row. The editable record lives in `data` so adding fields
+-- later does not require a migration; id and createdAt are mirrored as columns
+-- for ordering and lookups.
+
+create table if not exists public.projects (
+  id          text primary key,
+  "createdAt" timestamptz not null default now(),
+  data        jsonb not null default '{}'::jsonb
+);
+
+create index if not exists projects_created_idx on public.projects ("createdAt" desc);
+create index if not exists projects_category_idx on public.projects ((data->>'category'));
+create index if not exists projects_status_idx on public.projects ((data->>'status'));
+
+alter table public.projects enable row level security;
+-- Same rule as testimonials: service role only. Public reads go through the API.
+
 -- ── storage ────────────────────────────────────────────────────────────────
 -- Private bucket: files are only reachable through the API (service role) or,
 -- once an entry is approved + published, the API streams the bytes itself.

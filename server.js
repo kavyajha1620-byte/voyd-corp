@@ -16,7 +16,9 @@ const types = {
   ".jpeg": "image/jpeg",
   ".webp": "image/webp",
   ".woff2": "font/woff2",
-  ".ico": "image/x-icon"
+  ".ico": "image/x-icon",
+  ".txt": "text/plain; charset=utf-8",
+  ".xml": "application/xml; charset=utf-8"
 };
 
 // Local preview only. Secrets live in a file that is never committed.
@@ -115,9 +117,10 @@ const server = http.createServer(async (request, response) => {
     }
 
     const extension = path.extname(filePath).toLowerCase();
+    const noStore = extension === ".html" || extension === ".js" || extension === ".css";
     response.writeHead(200, {
       "Content-Type": types[extension] || "application/octet-stream",
-      "Cache-Control": extension === ".html" ? "no-cache" : "public, max-age=3600",
+      "Cache-Control": noStore ? "no-store" : "public, max-age=3600",
       "X-Content-Type-Options": "nosniff"
     });
     fs.createReadStream(filePath).pipe(response);

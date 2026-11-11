@@ -44,7 +44,17 @@ module.exports = async (req, res) => {
       owner.consent === true &&
       owner.allowScreenshot !== false;
 
-    if (!isPublicEntry) requireAdmin(req);
+    const projects = store.configured && typeof store.listProjects === "function" ? await store.listProjects() : [];
+    const project = projects.find(
+      (item) =>
+        Array.isArray(item.screenshots) &&
+        item.screenshots.some((shot) => shot && shot.id === id)
+    );
+    const isPublicProject = Boolean(project && project.status === "published");
+
+    if (!isPublicEntry && !isPublicProject) requireAdmin(req);
+
+    const publicImage = isPublicEntry || isPublicProject;
 
     const ext = Object.keys(MIME_BY_EXT).find((key) => image.mime === MIME_BY_EXT[key]) || "jpg";
     res.statusCode = 200;
@@ -52,7 +62,7 @@ module.exports = async (req, res) => {
     res.setHeader("X-Content-Type-Options", "nosniff");
     res.setHeader("Content-Disposition", `inline; filename="screenshot.${ext}"`);
     res.setHeader("Content-Security-Policy", "default-src 'none'; img-src 'self'; sandbox");
-    res.setHeader("Cache-Control", isPublicEntry ? "public, max-age=300, stale-while-revalidate=86400" : "private, no-store");
+    res.setHeader("Cache-Control", publicImage ? "public, max-age=300, stale-while-revalidate=86400" : "private, no-store");
     res.end(image.buffer);
     return undefined;
   } catch (err) {

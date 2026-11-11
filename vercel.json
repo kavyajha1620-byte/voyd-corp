@@ -2,12 +2,20 @@
   "framework": null,
   "buildCommand": null,
   "outputDirectory": ".",
-  "cleanUrls": true,
+  "cleanUrls": false,
   "trailingSlash": false,
   "rewrites": [
     {
-      "source": "/google9ebcd36542cc58f1.html",
-      "destination": "/api/google-verify"
+      "source": "/testimonials",
+      "destination": "/testimonials.html"
+    },
+    {
+      "source": "/projects-admin",
+      "destination": "/projects-admin.html"
+    },
+    {
+      "source": "/testimonials-admin",
+      "destination": "/testimonials-admin.html"
     }
   ]
 }
